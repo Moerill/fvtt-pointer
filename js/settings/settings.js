@@ -86,6 +86,18 @@ export class PointerSettingsMenu extends FormApplication {
 				}
 			})
 		);
+
+		if (!game.user.isGM) return;
+
+		html[0].querySelector('.pointer-apply-settings').addEventListener('click', async ev => {
+			const settings = this.userData;
+			console.log(settings);
+			for (let user of game.users) {
+				await user.unsetFlag('pointer', 'settings');
+				await user.setFlag('pointer', 'settings', settings);
+			}
+			ui.notifications.info('Finished applying settings to all users!');
+		});
 	}
 
 	async _addPointer() {
@@ -284,6 +296,10 @@ export class PointerSettingsMenu extends FormApplication {
 
 		container.querySelectorAll('input, select').forEach(el => {
 			el.addEventListener('input', this._designerInputChange.bind(this));
+			// el.addEventListener('change', ev => this.pointer.save());
+			el.addEventListener('wheel', ev => {
+				ev.stopPropagation(); ev.preventDefault();
+			})
 		});
 	}
 

@@ -40,6 +40,7 @@ export class PointerContainer extends PIXI.Container {
 			ping.hide();
 			pointer.hide();
 			this._users[user.id] = {pointer, ping};
+			this.updateUserColor(user);
 		}
 	}
 
@@ -55,6 +56,12 @@ export class PointerContainer extends PIXI.Container {
 		const data = this._getUserPointerData(user);
 		this._users[user.id].pointer.update(data.pointer);
 		this._users[user.id].ping.update(data.ping);
+	}
+
+	updateAll() {
+		for (let user of game.users) {
+			this.update(user);
+		}
 	}
 
 	updateUserColor(user) {

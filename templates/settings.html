@@ -37,6 +37,13 @@
 			<input type='checkbox' data-dtype='boolean' name='user.controls.ping.pointerActive' id='pointer-pointer-active' {{checked controls.ping.pointerActive}}/><label for='pointer-pointer-active'>{{localize 'POINTER.Settings.Controls.ping.pointerActive'}}</label> 
 			<span class='pointer-hint'>{{localize "POINTER.Settings.Controls.ping.pointerActiveHint"}}</span>
 		</div>
+
+		<h2>GM Settings</h2>
+		<div class='form-group'>
+			<label>{{localize 'POINTER.Settings.GM.applyToAll.label'}}</label>
+			<button class='pointer-apply-settings'>{{localize 'POINTER.Settings.GM.applyToAll.button'}}</button>
+			<span class='pointer-hint'>{{localize 'POINTER.Settings.GM.applyToAll.hint'}}</span>
+		</div>
 	</section>
 	<section class='tab chooser-tab' data-tab='chooser'>
 		<ul class='chooser'>
@@ -48,8 +55,10 @@
 				<label class='chooser-checkbox'>
 					{{localize 'POINTER.General.ping'}}
 				</label>
+				{{#if canConfigure}}
 				<a class='delete-pointer'>
 				</a>
+				{{/if}}
 			</li>
 			{{#each collection}}
 				<li class='pointer-selection' data-pointer-id='{{this.id}}'>
@@ -64,8 +73,8 @@
 						<a class='pointer-selected-as-ping'>
 						</a>
 					</label>
-					{{#if canConfigure}}
-					<a class='delete-pointer' title='{{localize 'POINTER.General.delete'}}'>
+					{{#if @root.canConfigure}}
+					<a class='delete-pointer' title='{{localize "POINTER.General.delete"}}'>
 					</a>
 					{{/if}}
 				</li>
@@ -82,13 +91,5 @@
 		<section class='designer'>
 			{{> 'modules/pointer/templates/designer.html'}}
 		</section>
-		<!-- 2 Listen, je für ping und pointer
-
-		Für jedes element:
-		- click to edit/show (edit nur wenn berechtigung stimmt)
-		- delete btn
-		- set as default btn
-
-		Add element button (berechtigung!) -->
 	</section>
 </form>

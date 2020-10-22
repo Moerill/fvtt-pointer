@@ -216,6 +216,36 @@
 			}
 		}
 	}
+
+	.form-fields {
+		position: relative;
+		input[type='range'] {
+			z-index: 1;
+			margin-top: -.8em;
+		}
+	}
+	.pointer-ticks {
+		position: absolute;
+		left: 3px; // thumb size
+		top: .1em;
+		width: calc(100% - 58px - 3px - 6px); // number field - range margin - thumb size
+		display: flex;
+		justify-content: space-between;
+		z-index: 0;
+		pointer-events: none;
+		span {
+			display: flex;
+			justify-content: center;
+			align-items: flex-start;
+			text-align: center;
+			width: 1px;
+			height: 1em;
+			line-height: 3em;
+			background: black;
+			margin: 0 0 10px 0;
+			font-size: .8em;
+		}
+	}
 }
 
 

@@ -26,7 +26,10 @@ export function initSettingsMenu() {
 		config: false,
 		restricted: false,
 		scope: "world",
-		type: Object
+		type: Object,
+		onChange: (data) => {
+			canvas.controls.pointer.updateAll();
+		}
 	});
 
 	loadTemplates([
@@ -63,4 +66,5 @@ export function initSettingsMenu() {
 			game.settings.set('pointer', 'version', game.modules.get('pointer').data.version);
 		}
 	}
+	new (PointerSettingsMenu)().render(true);
 }

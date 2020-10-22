@@ -182,6 +182,35 @@
 .pointer-settings .chooser-tab.active .chooser .header .delete-pointer:before {
   content: '';
 }
+.pointer-settings .form-fields {
+  position: relative;
+}
+.pointer-settings .form-fields input[type='range'] {
+  z-index: 1;
+  margin-top: -0.8em;
+}
+.pointer-settings .pointer-ticks {
+  position: absolute;
+  left: 3px;
+  top: 0.1em;
+  width: calc(100% - 58px - 3px - 6px);
+  display: flex;
+  justify-content: space-between;
+  z-index: 0;
+  pointer-events: none;
+}
+.pointer-settings .pointer-ticks span {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: center;
+  width: 1px;
+  height: 1em;
+  line-height: 3em;
+  background: black;
+  margin: 0 0 10px 0;
+  font-size: 0.8em;
+}
 .dark-mode .pointer-designer {
   --border-color: #aaa;
   --div-bg-color: rgba(150, 150, 150, 0.05);

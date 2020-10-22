@@ -19,11 +19,17 @@
 					"forceHint": "Pressing this button places a ping and forces your players view to your view."
 				}
 			},
+			"GM": {
+				"applyToAll": {
+					"label": "Apply your settings to all users?",
+					"button": "Yes!",
+					"hint": "All users will get your hotkey settings as well as your selected ping and pointer. This will not stop your players from changing these settings afterwards!"
+				}
+			},
 			"Designer": {
 				"Graphic": "Graphic",
 				"Scale": {
-					"label": "Scale",
-					"hint": "In grid units"
+					"label": "Scale"
 				},
 				"Angle": {
 					"label": "Angle"
@@ -43,10 +49,10 @@
 					"scale": {
 						"label": "Scale"
 					},
-					"duration": "Duration [s]",
+					"duration": "Duration",
 					"easing": "Easing Method"
 				},
-				"pingDuration": "Duration as Ping [s]"
+				"pingDuration": "Duration as Ping"
 			},
 			"Chooser": {
 				"addPointer": "Create new"
@@ -58,7 +64,12 @@
 			"name": "Name",
 			"ping": "Ping",
 			"pointer": "Pointer",
-			"delete": "Delete?"
+			"delete": "Delete?",
+			"units": {
+				"grid": "grid units",
+				"degree": "deg.",
+				"seconds": "s"
+			}
 		}
 	}
 }

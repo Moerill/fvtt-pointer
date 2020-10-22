@@ -12,7 +12,7 @@ const argv = require('yargs').argv;
 
 const browserSync = require('browser-sync').create();
 
-const moduleName = "pointer";
+const moduleName = "fvtt-pointer";
 const repoBaseUrl = 'https://github.com/Moerill/';
 const rawBaseUrl = 'https://raw.githubusercontent.com/Moerill/'
 

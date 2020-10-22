@@ -129,6 +129,7 @@ export class PointerSettingsMenu extends FormApplication {
 
 	_initControlChooser(inp) {
 		inp.addEventListener('focusout', ev => {
+			this._onSubmit(ev);
 			this._focusedControl = null;
 			ev.preventDefault(); ev.stopPropagation();
 		});
@@ -220,7 +221,7 @@ export class PointerSettingsMenu extends FormApplication {
 		}
 
 		const userSettings = this.userData; 
-		console.log(userSettings);
+		
 		let selectedPointer = data.collection.find(e => e.id === userSettings.pointer)
 		if (!userSettings.pointer || !selectedPointer) {
 			selectedPointer = data.collection.find(e => e.default === 'pointer') || data.collection[0];
@@ -245,6 +246,7 @@ export class PointerSettingsMenu extends FormApplication {
 		if (this.canConfigure)
 			await this.pointer.save();
 		const data = expandObject(formData);
+		
 		let settings = duplicate(this.userData);
 		settings = mergeObject(settings, data.user);
 		const chooser = this.form.querySelector('.chooser');
@@ -252,7 +254,7 @@ export class PointerSettingsMenu extends FormApplication {
 		settings.ping = pingId;
 		const pointerId = chooser.querySelector('input[name="selectedAsPointer"]:checked').closest('li').dataset.pointerId;
 		settings.pointer = pointerId;
-		console.log(settings);
+		
 		await game.user.setFlag('pointer', 'settings', settings);
 		this.render();
 	}

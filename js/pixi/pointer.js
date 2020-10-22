@@ -157,7 +157,7 @@ export class Pointer extends PIXI.Container {
 				this.timeline.clear();
 			else
 				this.timeline = new TimelineMax();
-			console.log(newData.animations, this.data.animations, this.timeline);
+			
 			if (this.data?.animations?.rotation?.use) {
 				const rotData = this.data.animations.rotation;
 				const min = rotData.min,

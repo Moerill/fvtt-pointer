@@ -35,7 +35,7 @@ function setUpControls(settings) {
 
 	if (game.user.isGM) {		
 		const keys = settings.ping.force.split(' + ');
-		console.log(keys);
+		
 		const metaKeys = keys.splice(0, keys.length - 1);
 		controls.force.meta = {};
 		for (const meta of ['Ctrl', 'Shift', 'Meta', 'Alt'])
@@ -52,7 +52,7 @@ function setUpControls(settings) {
 			controls.force.key = keys[0];
 		}
 	}
-	console.log(controls)
+	
 }
 
 function removeListeners() {

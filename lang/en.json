@@ -1,6 +1,8 @@
 {
 	"POINTER": {
 		"Settings": {
+			"Name": "Choose your hotkeys, ping and pointer!",
+			"Button": "Settings and Design Studio",
 			"Controls": {
 				"header": "Controls",
 				"inputhint": "Click on the input and choose your desired key.",

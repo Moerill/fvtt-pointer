@@ -3,7 +3,7 @@ import { TimelineMax } from '/scripts/greensock/esm/all.js';
 export class Pointer extends PIXI.Container {
 	constructor(data = {}, userId = game.userId, gridSize = canvas.grid.size) {
 		super();
-		this.data = data; //{gridSize: data.gridSize};
+		this.data = duplicate(data); //{gridSize: data.gridSize};
 
 		this.userId = userId;
 		this.gridSize = gridSize;
@@ -12,87 +12,6 @@ export class Pointer extends PIXI.Container {
 
 	static get defaultSettings() {
 		return this.default('pointer'); 
-	}
-
-	static default(type) {
-		return {
-			pointer: {
-				name: 'Default Pointer',
-				id: randomID(),
-				scale: 1,
-				img: 'modules/pointer/assets/pointer.svg',
-				// tint: game.user.color,
-				angle: 0,
-				offset: {x: 0.5, y: 0.5},
-				tint: {
-					color: '#FFFFFF',
-					useUser: true
-				},
-				pingDuration: 1,
-				animations: {
-					rotation: {
-						use: false,
-						dur: 1,
-						min: 0,
-						max: 180,
-						yoyo: false,
-						easing: {
-							method: 'none',
-							type: 'in'
-						}
-					},
-					scale: {
-						use: false,
-						dur: 1,
-						min: 0.5,
-						max: 2,
-						yoyo: false,
-						easing: {
-							method: 'none',
-							type: 'in'
-						}
-					}
-				}
-			},
-			ping: {
-				name: 'Default Ping',
-				id: randomID(),
-				scale: 1,
-				img: 'modules/pointer/assets/focus.svg',
-				// tint: game.user.color,
-				angle: 0,
-				offset: {x: 0, y: 0},
-				tint: {
-					color: '#FFFFFF',
-					useUser: true
-				},
-				pingDuration: 1,
-				animations: {
-					rotation: {
-						use: true,
-						dur: 5,
-						min: -180,
-						max: 180,
-						yoyo: false,
-						easing: {
-							method: 'none',
-							type: 'in'
-						}
-					},
-					scale: {
-						use: false,
-						dur: 2.5,
-						min: 1,
-						max: 1.5,
-						yoyo: true,
-						easing: {
-							method: 'sine',
-							type: 'inOut'
-						}
-					}
-				}
-			}
-		}[type]
 	}
 
 	async draw(newData = this.data) {
@@ -190,7 +109,7 @@ export class Pointer extends PIXI.Container {
 	}
 
 	update(udata) {
-		this.data = mergeObject(this.data, udata);
+		this.data = mergeObject(this.data, duplicate(udata));
 		this.draw(expandObject(udata));
 
 		return;
@@ -203,8 +122,6 @@ export class Pointer extends PIXI.Container {
 		const data = duplicate(this.data);
 		delete data.position;
 		collection[idx] = data;
-		console.log(data);
-		console.log(collection);
 		return game.settings.set('pointer', 'collection', collection);
 	}
 

@@ -2,7 +2,7 @@
 	"name": "pointer",
 	"title": "PnP - Pings and Pointer!",
 	"description": "Let players show a cursor to everyone on demand and allows to ping a certain position. <br>Default Key: X <br> Left click to Ping while pressing X<br> Right click while pressing X to force players to your view (GM only).",
-	"version": "1.10.0",
+	"version": "2.0.0",
 	"author": "Moerill",
 	"esmodules": ["js/index.js"],
 	"styles": ["fvtt-pointer.css"],
@@ -17,6 +17,6 @@
 	"compatibleCoreVersion": "0.7.5",
 	"socket": true,
 	"manifest": "https://raw.githubusercontent.com/Moerill/fvtt-pointer/master/module.json",
-	"download": "https://github.com/Moerill/fvtt-pointer/releases/download/v1.10.0/v1.10.0.zip",
+	"download": "https://github.com/Moerill/fvtt-pointer/releases/download/v2.0.0/v2.0.0.zip",
 	"url": "https://github.com/Moerill/fvtt-pointer"
 }

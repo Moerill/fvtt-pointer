@@ -17,7 +17,7 @@ export class PointerContainer extends PIXI.Container {
 	static init() {
 		// called inside the ready hook, so settings are registered.
 		// ready hook *always* is supposed to come after the canvasReady hook
-		if (canvas)
+		if (canvas.scene)
 			canvas.controls.pointer = canvas.controls.addChild(new PointerContainer());
 
 		window.addEventListener('mousemove', PointerContainer.trackMousePos);
@@ -44,10 +44,10 @@ export class PointerContainer extends PIXI.Container {
 	}
 
 	_getUserPointerData(user) {
-		const collection = game.settings.get('pointer', 'collection');
+		const collection = game.settings.get('pointer', 'collection') || PointerSettingsMenu.defaultCollection;
 		const settings = mergeObject(PointerSettingsMenu.defaultSettings, user.getFlag('pointer', 'settings'));
-		const pointerData = collection.find(e => e.id === settings.pointer) || collection.find(e => e.default === 'pointer') || collection[0];
-		const pingData = collection.find(e => e.id === settings.ping) || collection.find(e => e.default === 'ping') || collection[0];
+		const pointerData = collection.find(e => e.id === settings.pointer) || collection[0];
+		const pingData = collection.find(e => e.id === settings.ping) || collection[1] || collection[0];
 		return {pointer: pointerData, ping: pingData}
 	}
 
@@ -72,6 +72,7 @@ export class PointerContainer extends PIXI.Container {
 	}
 
 	static trackMousePos(ev) {
+		if (!canvas.controls.pointer) return;
 		canvas.controls.pointer.mouse = {
 			x: ev.clientX,
 			y: ev.clientY
@@ -89,8 +90,6 @@ export class PointerContainer extends PIXI.Container {
 	}
 
 	ping({userId = game.user.id, position = this.getWorldCoord(), force = false, scale = canvas.stage.scale.x}={}) {
-		console.log("ping")
-		console.log(position, userId)
 		const ping = this._users[userId].ping;
 		ping.update({position}); 
 

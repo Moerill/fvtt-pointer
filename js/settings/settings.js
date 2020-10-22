@@ -86,7 +86,7 @@ export class PointerSettingsMenu extends FormApplication {
 					"useUser": true,
 					"color": "#ffffff"
 				},
-				"pingDuration": 1,
+				"pingDuration": 5,
 				"animations": {
 					"rotation": {
 						"use": true,
@@ -313,7 +313,7 @@ export class PointerSettingsMenu extends FormApplication {
 				const pointerData = li.dataset.pointerId === this.pointer.data.id ? {} : duplicate(this.pointer.data);
 				collection = collection.filter(e => e.id !== li.dataset.pointerId);
 				if (collection.length === 0)
-					collection = this.constructor.defaultCollection;
+					collection = duplicate(this.constructor.defaultCollection);
 				game.settings.set('pointer', 'collection', collection).then(async e => {
 					await this._render();
 					this._selectPointer(pointerData);
@@ -352,8 +352,9 @@ export class PointerSettingsMenu extends FormApplication {
 
 	async _addPointer() {
 		const idx = Math.floor(Math.random() * PointerSettingsMenu.defaultCollection.length);
-		const pointerData = PointerSettingsMenu.defaultCollection[idx];
+		const pointerData = duplicate(PointerSettingsMenu.defaultCollection[idx]);
 		pointerData.name = 'New';
+		pointerData.id = randomID()
 
 		const collection = duplicate(game.settings.get('pointer', 'collection'));
 		collection.push(pointerData);
@@ -367,7 +368,7 @@ export class PointerSettingsMenu extends FormApplication {
 	async _onClickName(ev) {
 		const li = ev.target.closest('.pointer-selection');
 		if (this.canConfigure) 
-			this.pointer.save();
+			await this.pointer.save();
 		const pointerId = li.dataset.pointerId;
 
 		const collection = game.settings.get('pointer', 'collection');
@@ -481,7 +482,7 @@ export class PointerSettingsMenu extends FormApplication {
 
 		data.collection = game.settings.get('pointer', 'collection');
 		if (data.canConfigure && !data.collection.length) {
-			data.collection = this.constructor.defaultCollection;
+			data.collection = duplicate(this.constructor.defaultCollection);
 			game.settings.set('pointer', 'collection', data.collection);
 		}
 
@@ -490,14 +491,14 @@ export class PointerSettingsMenu extends FormApplication {
 		let selectedPointer = data.collection.find(e => e.id === userSettings.pointer)
 		if (!userSettings.pointer || !selectedPointer) {
 			selectedPointer = data.collection[0];
-			userSettings.ping = selectedPointer.id;
+			userSettings.pointer = selectedPointer.id;
 		}
 		selectedPointer.selectedAsPointer = true;
 		data.pixi = selectedPointer;
 	
 		let selectedPing = data.collection.find(e => e.id === userSettings.ping);
 		if (!userSettings.ping || !selectedPing) {
-			selectedPing = data.collection[0];
+			selectedPing = data.collection[1] || data.collection[0];
 			userSettings.ping = selectedPing.id;
 		}		
 		selectedPing.selectedAsPing = true;
@@ -511,7 +512,6 @@ export class PointerSettingsMenu extends FormApplication {
 		if (this.canConfigure) {
 			// this.pointer.save();		
 			data.pointer.img = this.pointer.data.img;
-			console.log(data.pointer);
 			const pointer = new Pointer(data.pointer);
 			pointer.save();
 		}
@@ -531,6 +531,17 @@ export class PointerSettingsMenu extends FormApplication {
 	/** PIXI STUFF */
 
 	_initDesigner(container) {
+		container.querySelectorAll('input, select').forEach(el => {
+			el.addEventListener('input', this._designerInputChange.bind(this));
+			// el.addEventListener('change', ev => this.pointer.save());
+			el.addEventListener('wheel', ev => {
+				ev.stopPropagation(); ev.preventDefault();
+			})
+		});
+		if (this._pixiApp) {
+			container.querySelector('.canvas-container').appendChild(this._pixiApp.view);
+			return;
+		}
 		const {stage} = this._initPixiApp(container);
 
 		this._pixiApp.view.addEventListener('click', ev => {
@@ -550,13 +561,6 @@ export class PointerSettingsMenu extends FormApplication {
 
 		this.pointer = stage.addChild(new Pointer(pointerData, game.user.id, this.options.gridSize));
 
-		container.querySelectorAll('input, select').forEach(el => {
-			el.addEventListener('input', this._designerInputChange.bind(this));
-			// el.addEventListener('change', ev => this.pointer.save());
-			el.addEventListener('wheel', ev => {
-				ev.stopPropagation(); ev.preventDefault();
-			})
-		});
 	}
 
 	_designerInputChange(ev) {
@@ -617,9 +621,7 @@ export class PointerSettingsMenu extends FormApplication {
 					.lineTo(x + targetSize, y - targetSize);
 
 		return {
-			app,
-			stage,
-			grid
+			stage
 		}
 	}
 }

@@ -1,0 +1,190 @@
+.pointer-settings {
+  --border-color: #666;
+  --div-border-color: #6666;
+  --div-bg-color: rgba(0, 0, 0, 0.05);
+  --highlight-color: red;
+  --hint-color: #444;
+}
+.pointer-settings .window-content {
+  padding: 0;
+}
+.pointer-settings nav {
+  background: var(--div-bg-color);
+  padding: 6px;
+  margin: 0;
+  margin-bottom: 3px;
+  border-bottom: 1px solid var(--border-color);
+  margin: 0 0 6px 0;
+}
+.pointer-settings section {
+  padding: 0.8em;
+}
+.pointer-settings a[href] {
+  color: #4a52ca;
+}
+.pointer-settings .pointer-info {
+  font-weight: 900;
+  font-family: "Font Awesome 5 Free";
+  position: relative;
+  top: -0.4em;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  margin: 0;
+  padding: 0 0.3rem;
+}
+.pointer-settings .pointer-info:before {
+  font-size: 0.6rem;
+  content: "\f059";
+  border: none;
+}
+.pointer-settings input[type="checkbox"] {
+  opacity: 0;
+  width: 0;
+  padding: 0;
+  margin: 0;
+  flex: 0;
+  display: inline;
+}
+.pointer-settings label[for] {
+  cursor: pointer;
+}
+.pointer-settings .form-group .form-group,
+.pointer-settings .form-group .form-checkbox-group {
+  flex: 1 100%;
+  margin-left: 3ch;
+}
+.pointer-settings .form-checkbox-group {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  margin: 3px 0;
+}
+.pointer-settings .form-checkbox-group input[type="checkbox"] + label:hover {
+  text-shadow: 0 0 4px var(--highlight-color);
+}
+.pointer-settings .form-checkbox-group input[type="checkbox"] + label:before {
+  font-weight: 400;
+  font-family: "Font Awesome 5 Free";
+  padding: 0 0.3em;
+  content: "\f0c8";
+}
+.pointer-settings .form-checkbox-group input:checked + label:before {
+  font-weight: 900;
+  content: "\f14a";
+}
+.pointer-settings .form-checkbox-group .form-group {
+  flex: 1 100%;
+  margin: 0 3ch;
+}
+.pointer-settings .form-checkbox-group input ~ .form-group {
+  display: none;
+}
+.pointer-settings .form-checkbox-group input:checked ~ .form-group {
+  display: flex;
+}
+.pointer-settings .form-checkbox-group.inverse input ~ .form-group {
+  display: flex;
+}
+.pointer-settings .form-checkbox-group.inverse input:checked ~ .form-group {
+  display: none;
+}
+.pointer-settings .chooser-checkbox input[type="checkbox"] + a:hover {
+  text-shadow: 0 0 4px var(--highlight-color);
+}
+.pointer-settings .chooser-checkbox input[type="checkbox"] + a:before {
+  font-weight: 400;
+  font-family: "Font Awesome 5 Free";
+  padding: 0 0.3em;
+  content: "\f0c8";
+}
+.pointer-settings .chooser-checkbox input:checked + a:before {
+  font-weight: 900;
+  content: "\f14a";
+}
+.pointer-settings .pointer-hint {
+  flex: 0 100%;
+  padding: 0 1em 0.3em 0;
+  margin-left: 4ch;
+  font-size: 0.9em;
+  color: var(--hint-color);
+}
+.pointer-settings .pointer-chooser {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.pointer-settings .designer {
+  width: 600px;
+  flex: 0 600px;
+  padding: 0 0.5ch;
+  border-left: 1px solid #6669;
+}
+.pointer-settings .designer .canvas-container {
+  cursor: pointer;
+}
+.pointer-settings .chooser-tab.active {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.pointer-settings .chooser-tab.active .chooser {
+  flex: 1;
+  padding: 0;
+}
+.pointer-settings .chooser-tab.active .chooser .pointer-selection {
+  list-style-type: none;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.1ch 0.3ch;
+}
+.pointer-settings .chooser-tab.active .chooser .pointer-selection:nth-child(even) {
+  background: rgba(0, 0, 0, 0.1);
+  border-top: 1px solid #6666;
+  border-bottom: 1px solid #6666;
+}
+.pointer-settings .chooser-tab.active .chooser .pointer-name {
+  flex: 1;
+}
+.pointer-settings .chooser-tab.active .chooser .chooser-checkbox {
+  flex: 0 7ch;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+}
+.pointer-settings .chooser-tab.active .chooser .add-pointer {
+  flex: 1;
+  text-align: right;
+  padding-right: 1ch;
+}
+.pointer-settings .chooser-tab.active .chooser .add-pointer:before {
+  content: '\f067';
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+.pointer-settings .chooser-tab.active .chooser .delete-pointer {
+  flex: 0 1ch;
+}
+.pointer-settings .chooser-tab.active .chooser .delete-pointer:before {
+  font-size: 0.8em;
+  content: '\f1f8';
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+.pointer-settings .chooser-tab.active .chooser .header .delete-pointer:before {
+  content: '';
+}
+.dark-mode .pointer-designer {
+  --border-color: #aaa;
+  --div-bg-color: rgba(150, 150, 150, 0.05);
+  --highlight-color: #7bb4ff;
+  --hint-color: #797979;
+}

@@ -1,0 +1,95 @@
+<form class="{{classes}}" autocomplete="off">
+	<nav class="sheet-tabs tabs">
+		<a class='item' data-tab='Info'>Info</a>
+		<a class='item' data-tab='General'>General</a>
+		<a class='item' data-tab='chooser'>Choose your Pointer!</a>
+	</nav>	
+
+	<section class='tab' data-tab='Info'>
+		<h2>Pointer v2 - Important!</h2>
+		<p>The Pointer module finally got a shiny new configurable settings menu! You can now create your own ping and pointer designs, set your own custom hotkeys (on a per user basis) and even have different designs on a per player basis! So make sure your players go and set their preferred settings as well!<br>
+			To celebrate v2 the Pointer module got renamed to: <em>PnP - Pings and Pointer</em>!
+		</p>
+		<p>This message will only show once to you as the GM user. Afterwards you can access this menu using the Settings menu!</p>
+    <h2>General</h2>
+    <ul>
+      <li><a href="https://github.com/Moerill/pointer/issues">Bugs? Create an issue here.</a></li>
+      <li><a href="https://github.com/Moerill/pointer/blob/master/CHANGELOG.md">Changelog</a></li>
+      <li><a href="https://github.com/Moerill/pointer">More Info</a></li>
+    </ul>
+	</section>
+	<section class='tab' data-tab='General'>
+		<h2>{{localize "POINTER.Settings.Controls.header"}}</h2>
+		<div class='form-group'>
+			<label for='pointer-pointer-button'>{{localize "POINTER.Settings.Controls.pointer.label"}}</label><input type='text' id='pointer-pointer-button' name='cuser.ontrols.pointer.key' class='pointer-control-chooser' value='{{controls.pointer.key}}' readonly/>
+			<span class='pointer-hint'>{{localize "POINTER.Settings.Controls.inputhint"}}<br>{{localize "POINTER.Settings.Controls.pointer.hint"}}</span>
+		</div>
+		<div class='form-group'>
+			<label for='pointer-ping-button'>{{localize "POINTER.Settings.Controls.ping.label"}}</label><input type='text' id='pointer-ping-button' name='user.controls.ping.key' class='pointer-control-chooser' value='{{controls.ping.key}}' readonly/>
+			<span class='pointer-hint'>{{localize "POINTER.Settings.Controls.inputhint"}}<br>{{localize "POINTER.Settings.Controls.ping.hint"}}</span>
+		</div>
+		{{#if isGM}}
+		<div class='form-group'>
+			<label>{{localize "POINTER.Settings.Controls.ping.force"}}</label><input type='text' id='pointer-ping-force-button' name='user.controls.ping.force' class='pointer-control-chooser' value='{{controls.ping.force}}' readonly/>
+			<span class='pointer-hint'>{{localize "POINTER.Settings.Controls.ping.forceHint"}}</span>
+		</div>
+		{{/if}}
+		<div class='form-checkbox-group'>
+			<input type='checkbox' data-dtype='boolean' name='user.controls.ping.pointerActive' id='pointer-pointer-active' {{checked controls.ping.pointerActive}}/><label for='pointer-pointer-active'>{{localize 'POINTER.Settings.Controls.ping.pointerActive'}}</label> 
+			<span class='pointer-hint'>{{localize "POINTER.Settings.Controls.ping.pointerActiveHint"}}</span>
+		</div>
+	</section>
+	<section class='tab chooser-tab' data-tab='chooser'>
+		<ul class='chooser'>
+			<li class='pointer-selection header'>
+				<span class='pointer-name'>{{localize 'POINTER.General.name'}}</span>
+				<label class='chooser-checkbox'>
+					{{localize 'POINTER.General.pointer'}}
+				</label>
+				<label class='chooser-checkbox'>
+					{{localize 'POINTER.General.ping'}}
+				</label>
+				<a class='delete-pointer'>
+				</a>
+			</li>
+			{{#each collection}}
+				<li class='pointer-selection' data-pointer-id='{{this.id}}'>
+					<a class='pointer-name'>{{this.name}}</a>
+					<label class='chooser-checkbox'>
+						<input type='checkbox' {{checked this.selectedAsPointer}} name='selectedAsPointer'/>
+						<a class='pointer-selected-as-pointer'>
+						</a>
+					</label>
+					<label class='chooser-checkbox'>
+						<input type='checkbox' {{checked this.selectedAsPing}} name='selectedAsPing'/>
+						<a class='pointer-selected-as-ping'>
+						</a>
+					</label>
+					{{#if canConfigure}}
+					<a class='delete-pointer' title='{{localize 'POINTER.General.delete'}}'>
+					</a>
+					{{/if}}
+				</li>
+			{{/each}}
+
+			{{#if canConfigure}}
+			<li class='pointer-selection'>
+				<a class='add-pointer'>
+					{{localize 'POINTER.Settings.Chooser.addPointer'}}
+				</a>
+			</li>
+			{{/if}}
+		</ul>
+		<section class='designer'>
+			{{> 'modules/pointer/templates/designer.html'}}
+		</section>
+		<!-- 2 Listen, je für ping und pointer
+
+		Für jedes element:
+		- click to edit/show (edit nur wenn berechtigung stimmt)
+		- delete btn
+		- set as default btn
+
+		Add element button (berechtigung!) -->
+	</section>
+</form>

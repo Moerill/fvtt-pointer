@@ -1,0 +1,22 @@
+{
+	"name": "pointer",
+	"title": "PnP - Pings and Pointer!",
+	"description": "Let players show a cursor to everyone on demand and allows to ping a certain position. <br>Default Key: X <br> Left click to Ping while pressing X<br> Right click while pressing X to force players to your view (GM only).",
+	"version": "2.0.0",
+	"author": "Moerill",
+	"esmodules": ["js/index.js"],
+	"styles": ["pointer.css"],
+  "languages": [
+		{
+			"lang": "en",
+			"name": "English",
+			"path": "lang/en.json"
+		}
+  ],
+	"minimumCoreVersion": "0.7.4",
+	"compatibleCoreVersion": "0.7.5",
+	"socket": true,
+	"manifest": "https://gitlab.com/moerills-fvtt-modules/pointer/raw/master/pointer/module.json",
+	"download": "https://gitlab.com/moerills-fvtt-modules/pointer/raw/v1.4.7/pointer.zip",
+	"url": "https://gitlab.com/moerills-fvtt-modules/pointer"
+}

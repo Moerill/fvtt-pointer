@@ -35,12 +35,11 @@ export class PointerContainer extends PIXI.Container {
     this._users = {}
 		for (let user of game.users) {
 			const data = this._getUserPointerData(user);
-			const pointer = this.addChild(new Pointer(data.pointer));
-			const ping = this.addChild(new Ping(data.ping));
+			const pointer = this.addChild(new Pointer(data.pointer, user.id));
+			const ping = this.addChild(new Ping(data.ping, user.id));
 			ping.hide();
 			pointer.hide();
 			this._users[user.id] = {pointer, ping};
-			this.updateUserColor(user);
 		}
 	}
 
@@ -54,6 +53,7 @@ export class PointerContainer extends PIXI.Container {
 
 	update(user) {
 		const data = this._getUserPointerData(user);
+		if (!data.pointer || !data.ping) return;
 		this._users[user.id].pointer.update(data.pointer);
 		this._users[user.id].ping.update(data.ping);
 	}
@@ -65,8 +65,10 @@ export class PointerContainer extends PIXI.Container {
 	}
 
 	updateUserColor(user) {
-		this._users[user.id].pointer.update({'tint.user': user.data.color});
-		this._users[user.id].ping.update({'tint.user': user.data.color});
+		const pointer = this._users[user.id].pointer;
+		pointer.update({tint: pointer.data.tint});
+		const ping = this._users[user.id].ping;
+		ping.update({tint: ping.data.tint});
 	}
 
 	static trackMousePos(ev) {
@@ -87,6 +89,8 @@ export class PointerContainer extends PIXI.Container {
 	}
 
 	ping({userId = game.user.id, position = this.getWorldCoord(), force = false, scale = canvas.stage.scale.x}={}) {
+		console.log("ping")
+		console.log(position, userId)
 		const ping = this._users[userId].ping;
 		ping.update({position}); 
 

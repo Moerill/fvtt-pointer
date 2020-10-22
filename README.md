@@ -23,6 +23,13 @@ The arrow pointer made by [Iga from the Noun Project](https://thenounproject.com
 The Focus was made by [Creative Stall from the Noun Project](https://thenounproject.com/term/pointer/1727334/).  
 Both are licensed under [Creative Commons](https://creativecommons.org/licenses/by/3.0/us/legalcode).
 
+The following items are from www.game-icons.net, all licensed under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/):
+- [Pin](https://game-icons.net/1x1/delapouite/pin.html)
+- [Triangle](https://game-icons.net/1x1/delapouite/triangle-target.html)
+- [Plain Arrow](https://game-icons.net/1x1/delapouite/plain-arrow.html)
+- [Convergence Target](https://game-icons.net/1x1/delapouite/convergence-target.html)
+All were slightly modified to fully fill their square and width/height attributes were added so they're compatible with FVTT as SVG.
+
 ## Support the development
 I'm doing this project mostly alone (with partial help of some wonderful people) in my spare time and for free.  
 If you want to encourage me to keep doing this, i am happy about all kind of tokens of appreciation. (Like some nice words, recommending this project or contributions to the project).  

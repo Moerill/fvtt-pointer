@@ -27,6 +27,7 @@ export function initSettingsMenu() {
 		restricted: false,
 		scope: "world",
 		type: Object,
+		default: PointerSettingsMenu.defaultCollection,
 		onChange: (data) => {
 			canvas.controls.pointer.updateAll();
 		}
@@ -66,5 +67,4 @@ export function initSettingsMenu() {
 			game.settings.set('pointer', 'version', game.modules.get('pointer').data.version);
 		}
 	}
-	new (PointerSettingsMenu)().render(true);
 }

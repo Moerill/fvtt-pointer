@@ -1,11 +1,12 @@
 import { TimelineMax } from '/scripts/greensock/esm/all.js';
 
 export class Pointer extends PIXI.Container {
-	constructor(data = {}) {
+	constructor(data = {}, userId = game.userId, gridSize = canvas.grid.size) {
 		super();
 		this.data = data; //{gridSize: data.gridSize};
-		if (!this.data.tint.user)
-			this.data.tint.user = game.user.color;
+
+		this.userId = userId;
+		this.gridSize = gridSize;
 		this.draw();
 	}
 
@@ -27,7 +28,6 @@ export class Pointer extends PIXI.Container {
 					color: '#FFFFFF',
 					useUser: true
 				},
-				gridSize: canvas.grid.size,
 				pingDuration: 1,
 				animations: {
 					rotation: {
@@ -66,7 +66,6 @@ export class Pointer extends PIXI.Container {
 					color: '#FFFFFF',
 					useUser: true
 				},
-				gridSize: canvas.grid.size,
 				pingDuration: 1,
 				animations: {
 					rotation: {
@@ -122,6 +121,7 @@ export class Pointer extends PIXI.Container {
 		
 		if (newData.position) {
 			this.position = data.position;
+			delete data.position;
 		}
 
 		if (newData.scale) {
@@ -129,15 +129,15 @@ export class Pointer extends PIXI.Container {
 			const { height, width } = this.sprite.texture;
 			const ratio = height / width;
 			this.sprite.scale = new PIXI.Point(
-				data.gridSize / width * data.scale,
-				data.gridSize / height * data.scale * ratio
+				this.gridSize / width * data.scale,
+				this.gridSize / height * data.scale * ratio
 			);
 		}
 
 		if (newData.offset) {
 			this.sprite.position = new PIXI.Point(
-				data.offset.x * data.gridSize * data.scale,
-				data.offset.y * data.gridSize * data.scale,
+				data.offset.x * this.gridSize * data.scale,
+				data.offset.y * this.gridSize * data.scale,
 			);
 		}
 
@@ -147,7 +147,7 @@ export class Pointer extends PIXI.Container {
 
 		if (newData.tint) {
 			if (this.data.tint.useUser)
-				this.sprite.tint = Number('0x' + data.tint.user.slice(1));
+				this.sprite.tint = Number('0x' + game.users.get(this.userId).data.color.slice(1));
 			else 
 				this.sprite.tint = Number('0x' + data.tint.color.slice(1));
 		}
@@ -198,9 +198,13 @@ export class Pointer extends PIXI.Container {
 
 	async save() {
 		// do update stuff here
-		const collection = game.settings.get('pointer', 'collection');
-		let pointer = collection.find(e => e.id === this.data.id);
-		pointer = mergeObject(pointer, this.data);
+		const collection = duplicate(game.settings.get('pointer', 'collection'));
+		let idx = collection.findIndex(e => e.id === this.data.id);
+		const data = duplicate(this.data);
+		delete data.position;
+		collection[idx] = data;
+		console.log(data);
+		console.log(collection);
 		return game.settings.set('pointer', 'collection', collection);
 	}
 
@@ -215,16 +219,24 @@ export class Pointer extends PIXI.Container {
 
 export class Ping extends Pointer {
 	draw(newData) {
-		super.draw(newData);
 		this.renderable = true;
-		if (!this.timeline)
-			this.timeline = new TimelineMax();
+		super.draw(newData);
+		if (newData?.position) {
+			if (!this.timeline)
+				this.timeline = new TimelineMax();
 
-		this.timeline.set(this, {onComplete: () => {
-				this.renderable = false;
-				this.timeline.pause();
+			const removeTween = this.timeline.getById('remove');
+			if (removeTween) {
+				this.timeline.remove(removeTween);
 			}
-		}, this.data.pingDuration || 3);
-		this.timeline.restart();
+			this.timeline.set(this, {id: 'remove', onComplete: () => {
+					this.renderable = false;
+					this.timeline.pause();
+				}
+			}, this.data.pingDuration || 3);
+			
+			this.timeline.restart();
+		} else
+			this.renderable = false;
 	}
 }

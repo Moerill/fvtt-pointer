@@ -119,13 +119,16 @@
   cursor: pointer;
 }
 .pointer-settings .designer {
-  width: 600px;
-  flex: 0 600px;
+  width: 400px;
+  flex: 0 400px;
   padding: 0 0.5ch;
   border-left: 1px solid #6669;
 }
 .pointer-settings .designer .canvas-container {
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .pointer-settings .chooser-tab.active {
   display: flex;

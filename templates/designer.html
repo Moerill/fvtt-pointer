@@ -1,7 +1,7 @@
 <div class='form-group'>
 	<label>{{localize 'POINTER.General.name'}}</label>
-	<input type='text' data-dtype='String' value='{{pixi.name}}' name="name" {{#unless canConfigure}}readonly{{/unless}}/>
-	<input type='text' value='{{pixi.id}}' name='id' style="display:none;"/>
+	<input type='text' data-dtype='String' value='{{pixi.name}}' name="pointer.name" {{#unless canConfigure}}readonly{{/unless}}/>
+	<input type='text' value='{{pixi.id}}' name='pointer.id' style="display:none;"/>
 </div>
 <div class='canvas-container'>
 
@@ -20,7 +20,7 @@
 			<span class='tick'>2</span>
 			<span class='tick'>3</span>
 		</div>
-		<input type='range' class='pointer-scale' data-dtype='Number' min='-3' step='0.1' max='3.0' name="scale" value="{{pixi.scale}}"/>
+		<input type='range' class='pointer-scale' data-dtype='Number' min='-3' step='.05' max='3.0' name="pointer.scale" value="{{pixi.scale}}"/>
 		<span class='range-value'>{{pixi.scale}}</span>
 	</div>
 </div>
@@ -34,7 +34,7 @@
 			<span class='tick'>90</span>
 			<span class='tick'>180</span>
 		</div>
-		<input class='pointer-angle' type='range' name="angle" value="{{pixi.angle}}" min='-180' step='1' max='180' list='pointer-angle-ticks'/>
+		<input class='pointer-angle' type='range' name="pointer.angle" value="{{pixi.angle}}" min='-180' step='1' max='180' list='pointer-angle-ticks'/>
 		<span class='range-value'>{{pixi.angle}}</span>
 	</div>
 </div>
@@ -48,7 +48,7 @@
 			<span class='tick'>1</span>
 			<span class='tick'>2</span>
 		</div>
-		<input class='pointer-offset' type='range' name="offset.x" value="{{pixi.offset.x}}" min='-2' step='0.1' max='2'/>
+		<input class='pointer-offset' type='range' name="pointer.offset.x" value="{{pixi.offset.x}}" min='-2' step='0.05' max='2'/>
 		<span class='range-value'>{{pixi.offset.x}}</span>
 	</div>
 </div>
@@ -62,15 +62,15 @@
 			<span class='tick'>1</span>
 			<span class='tick'>2</span>
 		</div>
-		<input class='pointer-offset' type='range' name="offset.y" value="{{pixi.offset.y}}" min='-2' step='0.1' max='2'/>
+		<input class='pointer-offset' type='range' name="pointer.offset.y" value="{{pixi.offset.y}}" min='-2' step='.05' max='2'/>
 		<span class='range-value'>{{pixi.offset.y}}</span>
 	</div>
 </div>
 <div class='form-checkbox-group inverse'>
-	<input type='checkbox' data-dtype='boolean' name='tint.useUser' id='pointer-designer-tint' {{checked pixi.tint.useUser}}/><label for='pointer-designer-tint'>{{localize 'POINTER.Settings.Designer.Tint.userColor'}}</label>
+	<input type='checkbox' data-dtype='boolean' name='pointer.tint.useUser' id='pointer-designer-tint' {{checked pixi.tint.useUser}}/><label for='pointer-designer-tint'>{{localize 'POINTER.Settings.Designer.Tint.userColor'}}</label>
 	<div class='form-group'>
 		<label>{{localize 'POINTER.Settings.Designer.Tint.label'}}</label>
-		<input class='pointer-tint' type='color' name="tint.color" value="{{pixi.tint.color}}"/>
+		<input class='pointer-tint' type='color' name="pointer.tint.color" value="{{pixi.tint.color}}"/>
 	</div>
 </div>
 <div class='form-group'>
@@ -84,13 +84,13 @@
 			<span class='tick'>8</span>
 			<span class='tick'>10</span>
 		</div>
-		<input type='range' name="pingDuration" value="{{pixi.pingDuration}}" min='0' step='0.1' max='10'/>
+		<input type='range' name="pointer.pingDuration" value="{{pixi.pingDuration}}" min='0' step='.05' max='10'/>
 		<span class='range-value'>{{pixi.pingDuration}}</span>
 	</div>
 </div>
 <h2>{{localize 'POINTER.Settings.Designer.Animations.header'}}</h2>
 <div class='form-checkbox-group'>
-	<input type='checkbox' data-dtype='boolean' name='animations.rotation.use' id='pointer-designer-animations-rotate' {{checked pixi.animations.rotation.use}}/><label for='pointer-designer-animations-rotate'>{{localize 'POINTER.Settings.Designer.Animations.rotate.label'}}</label>
+	<input type='checkbox' data-dtype='boolean' name='pointer.animations.rotation.use' id='pointer-designer-animations-rotate' {{checked pixi.animations.rotation.use}}/><label for='pointer-designer-animations-rotate'>{{localize 'POINTER.Settings.Designer.Animations.rotate.label'}}</label>
 
 	<div class='form-group'>
 		<label>{{localize 'POINTER.Settings.Designer.Animations.duration'}} [{{localize 'POINTER.General.units.seconds'}}]</label>
@@ -103,24 +103,24 @@
 				<span class='tick'>8</span>
 				<span class='tick'>10</span>
 			</div>
-			<input class='pointer-angle' type='range' name="animations.rotation.dur" value="{{pixi.animations.rotation.dur}}" min='0.1' step='.1' max='10'/>
+			<input class='pointer-angle' type='range' name="pointer.animations.rotation.dur" value="{{pixi.animations.rotation.dur}}" min='0.1' step='.05' max='10'/>
 			<span class='range-value'>{{pixi.animations.rotation.dur}}</span>
 		</div>
 	</div>	
 	<div class='form-group'>
 		<label>{{localize 'POINTER.Settings.Designer.Animations.easing'}}</label>
 		<div class='form-fields'>
-			<select name="animations.rotation.easing.method">
+			<select name="pointer.animations.rotation.easing.method">
 				{{selectOptions easingMethod selected=pixi.animations.rotation.easing.method}}
 			</select>
-			<select name="animations.rotation.easing.type">
+			<select name="pointer.animations.rotation.easing.type">
 				{{selectOptions easingType selected=pixi.animations.rotation.easing.type}}
 			</select>
 		</div>
 	</div>
 
 	<div class='form-group form-checkbox-group'>
-		<input type='checkbox' data-dtype='boolean' name='animations.rotation.yoyo' id='pointer-designer-animations-rotation-yoyo' {{checked pixi.animations.rotation.yoyo}}/><label for='pointer-designer-animations-rotation-yoyo'>Yoyo instead of repeat</label>
+		<input type='checkbox' data-dtype='boolean' name='pointer.animations.rotation.yoyo' id='pointer-designer-animations-rotation-yoyo' {{checked pixi.animations.rotation.yoyo}}/><label for='pointer-designer-animations-rotation-yoyo'>Yoyo instead of repeat</label>
 	</div>
 
 	<div class='form-group'>
@@ -133,7 +133,7 @@
 				<span class='tick'>90</span>
 				<span class='tick'>180</span>
 			</div>
-			<input class='pointer-angle' type='range' name="animations.rotation.min" value="{{pixi.animations.rotation.min}}" min='-180' step='1' max='180'/>
+			<input class='pointer-angle' type='range' name="pointer.animations.rotation.min" value="{{pixi.animations.rotation.min}}" min='-180' step='1' max='180'/>
 			<span class='range-value'>{{pixi.animations.rotation.min}}</span>
 		</div>
 	</div>
@@ -147,14 +147,14 @@
 				<span class='tick'>90</span>
 				<span class='tick'>180</span>
 			</div>
-			<input class='pointer-angle' type='range' name="animations.rotation.max" value="{{pixi.animations.rotation.max}}" min='-180' step='1' max='180'/>
+			<input class='pointer-angle' type='range' name="pointer.animations.rotation.max" value="{{pixi.animations.rotation.max}}" min='-180' step='1' max='180'/>
 			<span class='range-value'>{{pixi.animations.rotation.max}}</span>
 		</div>
 	</div>
 
 </div>
 <div class='form-checkbox-group'>
-	<input type='checkbox' data-dtype='boolean' name='animations.scale.use' id='pointer-designer-animations-scale' {{checked pixi.animations.scale.use}}/><label for='pointer-designer-animations-scale'>{{localize 'POINTER.Settings.Designer.Animations.scale.label'}} [{{localize 'POINTER.General.units.grid'}}]</label>
+	<input type='checkbox' data-dtype='boolean' name='pointer.animations.scale.use' id='pointer-designer-animations-scale' {{checked pixi.animations.scale.use}}/><label for='pointer-designer-animations-scale'>{{localize 'POINTER.Settings.Designer.Animations.scale.label'}}</label>
 
 
 	<div class='form-group'>
@@ -168,24 +168,24 @@
 				<span class='tick'>8</span>
 				<span class='tick'>10</span>
 			</div>
-			<input class='pointer-angle' type='range' name="animations.scale.dur" value="{{pixi.animations.scale.dur}}" min='0.1' step='.1' max='10'/>
+			<input class='pointer-angle' type='range' name="pointer.animations.scale.dur" value="{{pixi.animations.scale.dur}}" min='0.1' step='.05' max='10'/>
 			<span class='range-value'>{{pixi.animations.scale.dur}}</span>
 		</div>
 	</div>	
 	<div class='form-group'>
 		<label>{{localize 'POINTER.Settings.Designer.Animations.easing'}}</label>
 		<div class='form-fields'>
-			<select name="animations.scale.easing.method">
+			<select name="pointer.animations.scale.easing.method">
 				{{selectOptions easingMethod selected=pixi.animations.scale.easing.method}}
 			</select>
-			<select name="animations.scale.easing.type">
+			<select name="pointer.animations.scale.easing.type">
 				{{selectOptions easingType selected=pixi.animations.scale.easing.type}}
 			</select>
 		</div>
 	</div>
 
 	<div class='form-group form-checkbox-group'>
-		<input type='checkbox' data-dtype='boolean' name='animations.scale.yoyo' id='pointer-designer-animations-scale-yoyo' {{checked pixi.animations.scale.yoyo}}/><label for='pointer-designer-animations-scale-yoyo'>Yoyo instead of repeat</label>
+		<input type='checkbox' data-dtype='boolean' name='pointer.animations.scale.yoyo' id='pointer-designer-animations-scale-yoyo' {{checked pixi.animations.scale.yoyo}}/><label for='pointer-designer-animations-scale-yoyo'>Yoyo instead of repeat</label>
 	</div>
 
 	<div class='form-group'>
@@ -198,8 +198,8 @@
 				<span class='tick'>1</span>
 				<span class='tick'>2</span>
 			</div>
-			<input class='pointer-angle' type='range' name="animations.scale.min" value="{{pixi.animations.scale.min}}" min='-2' step='.1' max='2'/>
-			<span class='range-value'>{{pixi.animations.scale.min}} [{{localize 'POINTER.General.units.grid'}}]</span>
+			<input class='pointer-angle' type='range' name="pointer.animations.scale.min" value="{{pixi.animations.scale.min}}" min='-2' step='.05' max='2'/>
+			<span class='range-value'>{{pixi.animations.scale.min}}</span>
 		</div>
 	</div>
 	<div class='form-group'>
@@ -212,7 +212,7 @@
 				<span class='tick'>1</span>
 				<span class='tick'>2</span>
 			</div>
-			<input class='pointer-angle' type='range' name="animations.scale.max"  min='-2' step='.1' max='2' value="{{pixi.animations.scale.max}}"/>
+			<input class='pointer-angle' type='range' name="pointer.animations.scale.max"  min='-2' step='.05' max='2' value="{{pixi.animations.scale.max}}"/>
 			<span class='range-value'>{{pixi.animations.scale.max}}</span>
 		</div>
 	</div>

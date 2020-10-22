@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 512 512"
+   style="height: 512px; width: 512px;"
+   version="1.1"
+   id="svg6"
+   sodipodi:docname="pin.svg"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
+		width="512"
+		height="512">
+  <metadata
+     id="metadata12">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs10" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="2544"
+     inkscape:window-height="1379"
+     id="namedview8"
+     showgrid="false"
+     inkscape:zoom="1.625"
+     inkscape:cx="256"
+     inkscape:cy="256"
+     inkscape:window-x="7"
+     inkscape:window-y="53"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg6" />
+  <g
+     class=""
+     transform="matrix(1.0939171,0,0,1.0960857,-24.058304,-24.22826)"
+     style="fill:#ffffff"
+     id="g4">
+    <path
+       d="m 326.953,22.87 -20.273,60.815 20.273,20.273 -115.428,115.427 c -16.39,-8 -34.277,-14.452 -51.84,-18.502 -14.247,-3.285 -28.136,-4.902 -40.802,-4.772 -16.84,0.173 -31.505,3.44 -41.975,9.973 L 305.914,435.09 c 11.447,-18.345 12.853,-49.592 5.2,-82.776 -4.05,-17.564 -10.502,-35.45 -18.5,-51.84 l 115.427,-115.43 20.274,20.274 60.817,-20.273 L 326.954,22.87 Z M 159.207,313.84 22.87,489.13 198.16,352.793 Z"
+       fill="#fff"
+       fill-opacity="0.8"
+       id="path2"
+       style="fill:#ffffff" />
+  </g>
+</svg>

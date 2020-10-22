@@ -7,7 +7,7 @@ export class PointerSettingsMenu extends FormApplication {
 			template: "modules/pointer/templates/settings.html",
 			height: "auto",
 			title: "Pings and Pointers - Settings",
-			width: 900,
+			width: 700,
 			classes: ["pointer", "pointer-settings"],
 			tabs: [ 
 				{
@@ -21,14 +21,261 @@ export class PointerSettingsMenu extends FormApplication {
       closeOnSubmit: false,
 			maxScale: 3,
 			pixiOptions: {
-				width: 600,
-				height: 600,
+				width: 300,
+				height: 300,
 				transparent: true,
 				sharedTicker: true,
 				sharedLoader: true
 			},
-			gridSize: 100
+			gridSize: 50
 		}
+	}
+
+	static get defaultCollection() {
+		return [
+			{
+				"name": "Pointer Hand",
+				"id": "wztq19uwjl",
+				"scale": 1,
+				"angle": 0,
+				"offset": {
+					"x": 0.5,
+					"y": 0.5
+				},
+				"tint": {
+					"useUser": true,
+					"color": "#ffffff"
+				},
+				"pingDuration": 1,
+				"animations": {
+					"rotation": {
+						"use": false,
+						"dur": 1,
+						"easing": {
+							"method": "none",
+							"type": "in"
+						},
+						"yoyo": false,
+						"min": 0,
+						"max": 180
+					},
+					"scale": {
+						"use": false,
+						"dur": 1,
+						"easing": {
+							"method": "none",
+							"type": "in"
+						},
+						"yoyo": false,
+						"min": 0.5,
+						"max": 2
+					}
+				},
+				"img": "modules/pointer/assets/pointer.svg"
+			},
+			{
+				"name": "Ping Round",
+				"id": "gw4tu2ov86",
+				"scale": 1,
+				"angle": 0,
+				"offset": {
+					"x": 0,
+					"y": 0
+				},
+				"tint": {
+					"useUser": true,
+					"color": "#ffffff"
+				},
+				"pingDuration": 1,
+				"animations": {
+					"rotation": {
+						"use": true,
+						"dur": 5,
+						"easing": {
+							"method": "none",
+							"type": "in"
+						},
+						"yoyo": false,
+						"min": -180,
+						"max": 180
+					},
+					"scale": {
+						"use": false,
+						"dur": 2.5,
+						"easing": {
+							"method": "sine",
+							"type": "inOut"
+						},
+						"yoyo": true,
+						"min": 1,
+						"max": 1.5
+					}
+				},
+				"img": "modules/pointer/assets/focus.svg",
+				"gridSize": 50,
+				"default": "ping"
+			},
+			{
+				"name": "Ping Arrows",
+				"id": "6p55sd7xi3",
+				"scale": 1,
+				"angle": 0,
+				"offset": {
+					"x": 0,
+					"y": 0
+				},
+				"tint": {
+					"useUser": true,
+					"color": "#ffffff"
+				},
+				"pingDuration": 5,
+				"animations": {
+					"rotation": {
+						"use": false,
+						"dur": 1,
+						"easing": {
+							"method": "none",
+							"type": "in"
+						},
+						"yoyo": false,
+						"min": 0,
+						"max": 180
+					},
+					"scale": {
+						"use": true,
+						"dur": 1,
+						"easing": {
+							"method": "none",
+							"type": "in"
+						},
+						"yoyo": true,
+						"min": 0.9,
+						"max": 1.3
+					}
+				},
+				"img": "modules/pointer/assets/convergence-target.svg"
+			},
+			{
+				"name": "Ping Triangle",
+				"id": "eogjz9yjn3",
+				"scale": 1,
+				"angle": 0,
+				"offset": {
+					"x": 0,
+					"y": -0.1
+				},
+				"tint": {
+					"useUser": true,
+					"color": "#ffffff"
+				},
+				"pingDuration": 5,
+				"animations": {
+					"rotation": {
+						"use": true,
+						"dur": 4,
+						"easing": {
+							"method": "none",
+							"type": "in"
+						},
+						"yoyo": false,
+						"min": -180,
+						"max": 180
+					},
+					"scale": {
+						"use": true,
+						"dur": 1,
+						"easing": {
+							"method": "none",
+							"type": "in"
+						},
+						"yoyo": true,
+						"min": 0.9,
+						"max": 1.3
+					}
+				},
+				"img": "modules/pointer/assets/triangle-target.svg"
+			},
+			{
+				"name": "Pointer Pin",
+				"id": "dvs2vb9y0y",
+				"scale": 1,
+				"angle": -15,
+				"offset": {
+					"x": 0.35,
+					"y": -0.6
+				},
+				"tint": {
+					"useUser": true,
+					"color": "#ffffff"
+				},
+				"pingDuration": 1,
+				"animations": {
+					"rotation": {
+						"use": false,
+						"dur": 1,
+						"easing": {
+							"method": "none",
+							"type": "in"
+						},
+						"yoyo": false,
+						"min": 0,
+						"max": 180
+					},
+					"scale": {
+						"use": true,
+						"dur": 1.5,
+						"easing": {
+							"method": "none",
+							"type": "in"
+						},
+						"yoyo": true,
+						"min": 0.9,
+						"max": 1
+					}
+				},
+				"img": "modules/pointer/assets/pin.svg"
+			},
+			{
+				"name": "Pointer Arrow",
+				"id": "6njoyebxpf",
+				"scale": 1,
+				"angle": 0,
+				"offset": {
+					"x": 0,
+					"y": -0.5
+				},
+				"tint": {
+					"useUser": true,
+					"color": "#ffffff"
+				},
+				"pingDuration": 1,
+				"animations": {
+					"rotation": {
+						"use": false,
+						"dur": 1,
+						"easing": {
+							"method": "none",
+							"type": "in"
+						},
+						"yoyo": false,
+						"min": 0,
+						"max": 180
+					},
+					"scale": {
+						"use": true,
+						"dur": 1.5,
+						"easing": {
+							"method": "none",
+							"type": "in"
+						},
+						"yoyo": true,
+						"min": 0.9,
+						"max": 1
+					}
+				},
+				"img": "modules/pointer/assets/plain-arrow.svg"
+			}
+		];
 	}
 
 	static get defaultSettings() {
@@ -62,9 +309,12 @@ export class PointerSettingsMenu extends FormApplication {
 			target = ev.target.closest('.delete-pointer');
 			if (target) {
 				const li = target.closest('li');
-				const collection = duplicate(game.settings.get('pointer', 'collection'));
+				let collection = duplicate(game.settings.get('pointer', 'collection'));
 				const pointerData = li.dataset.pointerId === this.pointer.data.id ? {} : duplicate(this.pointer.data);
-				game.settings.set('pointer', 'collection', collection.filter(e => e.id !== li.dataset.pointerId)).then(async e => {
+				collection = collection.filter(e => e.id !== li.dataset.pointerId);
+				if (collection.length === 0)
+					collection = this.constructor.defaultCollection;
+				game.settings.set('pointer', 'collection', collection).then(async e => {
 					await this._render();
 					this._selectPointer(pointerData);
 				});
@@ -101,8 +351,9 @@ export class PointerSettingsMenu extends FormApplication {
 	}
 
 	async _addPointer() {
-		const pointerData = Pointer.defaultSettings;
-		pointerData.name = 'New Pointer';
+		const idx = Math.floor(Math.random() * PointerSettingsMenu.defaultCollection.length);
+		const pointerData = PointerSettingsMenu.defaultCollection[idx];
+		pointerData.name = 'New';
 
 		const collection = duplicate(game.settings.get('pointer', 'collection'));
 		collection.push(pointerData);
@@ -129,12 +380,16 @@ export class PointerSettingsMenu extends FormApplication {
 
 		const designer = this.form.querySelector('.designer');
 		const flatData = flattenObject(pointerData);
+		console.log(flatData)
 		for (let key of Object.keys(flatData)) {
-			const inp = designer.querySelector(`input[name="${key}"]`);
+			const inp = designer.querySelector(`input[name="pointer.${key}"]`);
 			if (!inp) continue;
 			if (inp.type === 'checkbox')
 				inp.checked = flatData[key];
-			else
+			else if (inp.type === 'range') {
+				inp.value = flatData[key];
+				inp.parentNode.querySelector('.range-value').innerText = flatData[key];
+			} else
 				inp.value = flatData[key];
 		}
 	}
@@ -224,19 +479,17 @@ export class PointerSettingsMenu extends FormApplication {
 			"inOut": "In and Out"
 		}
 
-		data.collection = duplicate(game.settings.get('pointer', 'collection'));
+		data.collection = game.settings.get('pointer', 'collection');
 		if (data.canConfigure && !data.collection.length) {
-			data.collection = [Pointer.default('pointer'), Pointer.default('ping')];
-			data.collection[0].default = 'pointer';
-			data.collection[1].default = 'ping';
-			game.settings.set('pointer', 'collection', duplicate(data.collection));
+			data.collection = this.constructor.defaultCollection;
+			game.settings.set('pointer', 'collection', data.collection);
 		}
 
 		const userSettings = this.userData; 
 		
 		let selectedPointer = data.collection.find(e => e.id === userSettings.pointer)
 		if (!userSettings.pointer || !selectedPointer) {
-			selectedPointer = data.collection.find(e => e.default === 'pointer') || data.collection[0];
+			selectedPointer = data.collection[0];
 			userSettings.ping = selectedPointer.id;
 		}
 		selectedPointer.selectedAsPointer = true;
@@ -244,7 +497,7 @@ export class PointerSettingsMenu extends FormApplication {
 	
 		let selectedPing = data.collection.find(e => e.id === userSettings.ping);
 		if (!userSettings.ping || !selectedPing) {
-			selectedPing = data.collection.find(e => e.default === 'ping') || data.collection[1] || data.collection[0];
+			selectedPing = data.collection[0];
 			userSettings.ping = selectedPing.id;
 		}		
 		selectedPing.selectedAsPing = true;
@@ -254,11 +507,15 @@ export class PointerSettingsMenu extends FormApplication {
 	}
 
 	async _updateObject(event, formData) {
-		if (event.currentTarget?.closest('.designer')) return;
-		if (this.canConfigure)
-			await this.pointer.save();
 		const data = expandObject(formData);
-		
+		if (this.canConfigure) {
+			// this.pointer.save();		
+			data.pointer.img = this.pointer.data.img;
+			console.log(data.pointer);
+			const pointer = new Pointer(data.pointer);
+			pointer.save();
+		}
+		if (event.currentTarget?.closest('.designer')) return;
 		let settings = duplicate(this.userData);
 		settings = mergeObject(settings, data.user);
 		const chooser = this.form.querySelector('.chooser');
@@ -290,9 +547,8 @@ export class PointerSettingsMenu extends FormApplication {
 		const collection = game.settings.get('pointer', 'collection');
 		const pointerData = collection.find(e => e.id === pointerId) || collection[0];
 		pointerData.position = new PIXI.Point(this._pixiApp.view.width/2, this._pixiApp.view.height/2);
-		pointerData.scale = 1;
-		pointerData.gridSize = this.options.gridSize;
-		this.pointer = stage.addChild(new Pointer(pointerData));
+
+		this.pointer = stage.addChild(new Pointer(pointerData, game.user.id, this.options.gridSize));
 
 		container.querySelectorAll('input, select').forEach(el => {
 			el.addEventListener('input', this._designerInputChange.bind(this));
@@ -315,23 +571,23 @@ export class PointerSettingsMenu extends FormApplication {
 			const rangevalue = ev.currentTarget.parentNode.querySelector('.range-value');
 			rangevalue.innerText = ev.currentTarget.value;
 		}
-
-		udata[ev.currentTarget.name] = val;
-		this.pointer.update(udata);
+		const prop = ev.currentTarget.name.split('.').slice(1).join('.');
+		udata[prop] = val;
+		this.pointer.update(udata).then(async () => {
+			if (prop === 'name') {
+				const pointerData = this.pointer.data;
+				await this.render();
+				this._selectPointer(pointerData);
+			} 
+		});
 	}
 
 	_initPixiApp(container) {
-		const pixiOptions = {
-			width: 600,
-			height: 600,
-			transparent: true,
-			sharedTicker: true,
-			sharedLoader: true
-		};
+		const pixiOptions = this.options.pixiOptions;
 
 		const app = new PIXI.Application(pixiOptions);
 		this._pixiApp = app;
-		container.children[0].appendChild(app.view);
+		container.querySelector('.canvas-container').appendChild(app.view);
 		app.view.style.cursor = 'pointer';
 		const stage = app.stage
 		const grid = app.stage.addChild(new PIXI.Graphics());
@@ -351,13 +607,14 @@ export class PointerSettingsMenu extends FormApplication {
 		grid.position = new PIXI.Point(pixiOptions.width * 0.5, pixiOptions.height * 0.5);
 		grid.pivot = new PIXI.Point(gridLength * 0.5, gridLength * 0.5);
 		const target = app.stage.addChild(new PIXI.Graphics());
-		target.lineStyle(10, 0xcc0000, 1.0);
-		const targetSize = gridSize * 0.15;
-		const center = pixiOptions.width * 0.5;
-		target.moveTo(center - targetSize, center-targetSize)
-					.lineTo(center + targetSize, center + targetSize)
-					.moveTo(center - targetSize, center + targetSize)
-					.lineTo(center + targetSize, center - targetSize);
+		target.lineStyle(5, 0xcc0000, 1.0);
+		const targetSize = gridSize * 0.25;
+		const x = pixiOptions.width * 0.5,
+					y = pixiOptions.height * .5;
+		target.moveTo(x - targetSize, y-targetSize)
+					.lineTo(x + targetSize, y + targetSize)
+					.moveTo(x - targetSize, y + targetSize)
+					.lineTo(x + targetSize, y - targetSize);
 
 		return {
 			app,

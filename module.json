@@ -1,7 +1,7 @@
 {
 	"name": "pointer",
 	"title": "PnP - Pings and Pointer!",
-	"description": "Let players show a cursor to everyone on demand and allows to ping a certain position. <br>Default Key: X <br> Left click to Ping while pressing X<br> Right click while pressing X to force players to your view (GM only).",
+	"description": "Gives all players the option to show a customizable cursor on demand, as well as ping any location with a custom ping!<br>Hotkeys, pings, pointer, everything customizable!<br>As GM you can also move your players view to your pin on demand.",
 	"version": "2.0.0",
 	"author": "Moerill",
 	"esmodules": ["js/index.js"],

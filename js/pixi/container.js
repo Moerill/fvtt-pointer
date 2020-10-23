@@ -8,6 +8,7 @@ export class PointerContainer extends PIXI.Container {
 		this.initUsers();
 
 		this._socket = 'module.pointer';
+		canvas.stage.on('mousemove', ev => console.log(ev));
 	}
 
 	get deltaTime() {
@@ -73,6 +74,7 @@ export class PointerContainer extends PIXI.Container {
 
 	static trackMousePos(ev) {
 		if (!canvas.controls.pointer) return;
+		const interactionData = new PIXI.InteractionData();
 		canvas.controls.pointer.mouse = {
 			x: ev.clientX,
 			y: ev.clientY

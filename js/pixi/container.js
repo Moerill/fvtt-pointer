@@ -1,5 +1,5 @@
 import { Pointer, Ping } from "./pointer.js";
-import { TweenMax } from '/scripts/greensock/esm/all.js';
+import { TweenMax } from '../../../../scripts/greensock/esm/all.js';
 import { PointerSettingsMenu } from '../settings/settings.js';
 
 export class PointerContainer extends PIXI.Container {

@@ -1,3 +1,8 @@
+# v2.0.1
+
+- Fix the GSAP Timeline not being cleared on scene change, resulting in endless amount of errors.
+- Now using relative paths to import the gsap library, to allow for foundry instances using route prefixes.
+
 # v2.0.0
 
 - Almost everything build from the ground up for a more flexible and good looking experience!

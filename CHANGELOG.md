@@ -1,3 +1,8 @@
+# v2.1.0
+
+- grape juices isometric module compatibility! 
+  - This also resulted in a bit smarter and cleaner way to get the cursor position, yay!
+
 # v2.0.1
 
 - Fix the GSAP Timeline not being cleared on scene change, resulting in endless amount of errors.

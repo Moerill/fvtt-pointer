@@ -8,11 +8,11 @@ export class PointerContainer extends PIXI.Container {
 		this.initUsers();
 
 		this._socket = 'module.pointer';
-		canvas.stage.on('mousemove', ev => console.log(ev));
+		this._onMouseMove = ev => this._mouseMove(ev);
 	}
 
 	get deltaTime() {
-		return 1000 / 6;
+		return 1000 / 30;
 	}
 
 	static init() {
@@ -21,12 +21,12 @@ export class PointerContainer extends PIXI.Container {
 		if (canvas.scene)
 			canvas.controls.pointer = canvas.controls.addChild(new PointerContainer());
 
-		window.addEventListener('mousemove', PointerContainer.trackMousePos);
+		// window.addEventListener('mousemove', PointerContainer.trackMousePos);
 		game.socket.on('module.pointer', PointerContainer.socketHandler);
 		// but ready comes only during initialization
 		// so we need to take care of future scene changes (or other reasons for canvas rerenders)
 		Hooks.on('canvasReady', () => {
-			if (canvas.controls.pointer) canvas.controls.pointer.destroy();
+			if (canvas.controls.pointer) canvas.controls.pointer.destroy({chidren: true});
 
 			canvas.controls.pointer = canvas.controls.addChild(new PointerContainer())
 		});
@@ -72,26 +72,11 @@ export class PointerContainer extends PIXI.Container {
 		ping.update({tint: ping.data.tint});
 	}
 
-	static trackMousePos(ev) {
-		if (!canvas.controls.pointer) return;
-		const interactionData = new PIXI.InteractionData();
-		canvas.controls.pointer.mouse = {
-			x: ev.clientX,
-			y: ev.clientY
-		};
+	getMouseWorldCoord() {
+		return canvas.app.renderer.plugins.interaction.mouse.getLocalPosition(canvas.stage);
 	}
 
-	getWorldCoord(pos = this.mouse) {
-		// const t = this.worldTransform;
-    const t = canvas.stage.worldTransform;
-
-		return {
-			x: (pos.x - t.tx) / canvas.stage.scale.x,
-			y: (pos.y - t.ty) / canvas.stage.scale.y
-		}
-	}
-
-	ping({userId = game.user.id, position = this.getWorldCoord(), force = false, scale = canvas.stage.scale.x}={}) {
+	ping({userId = game.user.id, position = this.getMouseWorldCoord(), force = false, scale = canvas.stage.scale.x}={}) {
 		const ping = this._users[userId].ping;
 		ping.update({position}); 
 
@@ -132,7 +117,7 @@ export class PointerContainer extends PIXI.Container {
 	movePointer(userId, {x, y}) {
 		const pointer = this._users[userId].pointer;
 		if (pointer.renderable) { // only animate if already visible
-			TweenMax.to(pointer.position, this.deltaTime / 1000, {x, y, ease: 'Sine.out'});
+			TweenMax.to(pointer.position, this.deltaTime / 1000, {x, y});
 		} else {
 			pointer.renderable = true;
 			this._users[userId].pointer.update({position: {x, y}});
@@ -145,7 +130,6 @@ export class PointerContainer extends PIXI.Container {
 	}
 
 	start() {
-		this._onMouseMove = ev => this._mouseMove(ev);
 		this.lastTime = 0;
 		this._mouseMove();
 		window.addEventListener('mousemove', this._onMouseMove);
@@ -163,16 +147,14 @@ export class PointerContainer extends PIXI.Container {
 	}
 
 	_mouseMove(ev) {
-		const t = this.worldTransform,
-        	x = (this.mouse.x - t.tx) / canvas.stage.scale.x,
-					y = (this.mouse.y - t.ty) / canvas.stage.scale.y; 
-
+		const {x, y} = this.getMouseWorldCoord();
 		this._users[game.user.id].pointer.update({position: {x, y}});
 
 		const dt = Date.now() - this.lastTime;
 		if (dt < this.deltaTime) // 30 times per second
 			return;
 
+		this.lastTime = Date.now();
 		let mdata = {
 			senderId: game.user._id,
 			position: {x,y},
@@ -180,5 +162,10 @@ export class PointerContainer extends PIXI.Container {
 			type: "pointer"
 		}
 		game.socket.emit(this._socket, mdata);
+	}
+
+	destroy(...args) {
+		super.destroy(...args);
+		this.stop();
 	}
 }

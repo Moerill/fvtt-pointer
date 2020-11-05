@@ -1,3 +1,7 @@
+# v2.1.1
+
+- *FIX* links in the settings menu
+
 # v2.1.0
 
 - grape juices isometric module compatibility! 

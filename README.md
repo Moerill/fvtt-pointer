@@ -46,6 +46,9 @@ The following items are from www.game-icons.net, all licensed under [CC BY 3.0](
 - [Convergence Target](https://game-icons.net/1x1/delapouite/convergence-target.html)
 All were slightly modified to fully fill their square and width/height attributes were added so they're compatible with FVTT as SVG.
 
+Thanks to the following people for providing localizations:
+- Github user @lozalojo for spanish
+
 ## Support the development
 I'm doing this project mostly alone (with partial help of some wonderful people) in my spare time and for free.  
 If you want to encourage me to keep doing this, i am happy about all kind of tokens of appreciation. (Like some nice words, recommending this project or contributions to the project).  

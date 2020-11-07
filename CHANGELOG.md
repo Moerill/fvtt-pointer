@@ -1,3 +1,7 @@
+# v2.2.0
+
+- Added spanish localization, thanks to Github User @lozalojo!
+
 # v2.1.2
 
 - *FIX* using the new gsap dist path again, now that it has returned.

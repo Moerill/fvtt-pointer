@@ -1,0 +1,75 @@
+{
+	"POINTER": {
+		"Settings": {
+			"Name": "Elija las teclas de activación, notificación y puntero",
+			"Button": "Ajustes y Diseño",
+			"Controls": {
+				"header": "Controles",
+				"inputhint": "Haga clic en la entrada y elija la tecla que desee asignar.",
+				"pointer": {
+					"label": "Puntero",
+					"hint": "Mientras presione este botón el puntero seguirá el cursor del ratón siempre y cuando permanezca dentro de los límites del lienzo."
+				},
+				"ping": {
+					"label": "Notificación",
+					"pointerActive": "¿Notificar solo cuando el puntero está activo?",
+					"pointerActiveHint": "Cuando se activa esta opción y el puntero está habilitado al pulsar el botón se muestra una notificación.",
+					"hint": "Al presionar el botón la notificación aparecerá en la posición actual del cursor del ratón, siempre y cuando esté dentro del lienzo. Puede hacer que solo se pueda notificar cuando el puntero esté activo.",
+					"force": "Centrar la vista del jugador al notificar",
+					"forceHint": "Al presionar este botón se muestra la notificación y fuerza que la vista del jugador se centre en ella."
+				}
+			},
+			"GM": {
+				"applyToAll": {
+					"label": "¿Aplicar tus ajustes a todos los jugadores?",
+					"button": "¡Sí!",
+					"hint": "A todos los usuarios se les configurarán tus ajustes tanto de teclas como de puntero y notificación. ¡Esto no impedirá que los jugadores puedan después vover a cambiar los ajustes!"
+				}
+			},
+			"Designer": {
+				"Graphic": "Gráfico",
+				"Scale": {
+					"label": "Escala"
+				},
+				"Angle": {
+					"label": "Ángulo"
+				},
+				"Offset": {
+					"label": "Compensación"
+				},
+				"Tint": {
+					"label": "Tono de Color",
+					"userColor": "Use como tono el color del usuario."
+				},
+				"Animations": {
+					"header": "Animaciones",
+					"rotate": {
+						"label": "Rotación"
+					},
+					"scale": {
+						"label": "Escala"
+					},
+					"duration": "Duración",
+					"easing": "Método de Atenuación"
+				},
+				"pingDuration": "Duración como Notificación"
+			},
+			"Chooser": {
+				"addPointer": "Crear nuevo"
+			}
+		},
+		"General": {
+			"min": "Mín",
+			"max": "Máx",
+			"name": "Nombre",
+			"ping": "Notificación",
+			"pointer": "Puntero",
+			"delete": "¿Borrar?",
+			"units": {
+				"grid": "unidades de la rejilla",
+				"degree": "gr.",
+				"seconds": "s"
+			}
+		}
+	}
+}

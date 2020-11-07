@@ -1,3 +1,7 @@
+# v2.1.2
+
+- *FIX* using the new gsap dist path again, now that it has returned.
+
 # v2.1.1
 
 - *FIX* links in the settings menu

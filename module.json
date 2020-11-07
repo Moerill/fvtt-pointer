@@ -2,10 +2,13 @@
 	"name": "pointer",
 	"title": "PnP - Pointer and Pings!",
 	"description": "Gives all players the option to show a customizable cursor on demand, as well as ping any location with a custom ping!<br>Hotkeys, pings, pointer, everything customizable!<br>As GM you can also move your players view to your pin on demand.",
-	"version": "2.1.1",
+	"version": "2.1.2",
 	"author": "Moerill",
 	"esmodules": ["js/index.js"],
 	"styles": ["fvtt-pointer.css"],
+	"scripts": [
+		"greensock/dist/gsap.min.js"
+	],
 	"languages": [
 		{
 			"lang": "en",
@@ -13,10 +16,10 @@
 			"path": "lang/en.json"
 		}
 	],
-	"minimumCoreVersion": "0.7.4",
-	"compatibleCoreVersion": "0.7.5",
+	"minimumCoreVersion": "0.7.6",
+	"compatibleCoreVersion": "0.7.6",
 	"socket": true,
 	"manifest": "https://raw.githubusercontent.com/Moerill/fvtt-pointer/master/module.json",
-	"download": "https://github.com/Moerill/fvtt-pointer/releases/download/v2.1.1/v2.1.1.zip",
+	"download": "https://github.com/Moerill/fvtt-pointer/releases/download/v2.1.2/v2.1.2.zip",
 	"url": "https://github.com/Moerill/fvtt-pointer"
 }

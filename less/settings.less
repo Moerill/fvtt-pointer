@@ -4,13 +4,26 @@
 	--div-border-color: #6666;
 	--div-bg-color: rgba(0,0,0,0.05);
 	--highlight-color: red;
-	--hint-color: #444;
+  --hint-color: #aaa;
 
 
 	.window-content {
 		padding: 0;
 	}
+  span, h2, p, a, label {
+      mix-blend-mode: difference;
+      color: #DDD;
+  }
 
+	.pointer-hint {
+		  flex: 0 100%;
+		  padding: 0 1em 0.3em 0;
+		  margin-left: 4ch;
+		  font-size: 0.9em;
+		  // background: var(--div-bg-color);
+		  color: var(--hint-color);
+      mix-blend-mode: difference;
+	}
 	nav {
 		background: var(--div-bg-color);
 		padding: 6px;
@@ -123,14 +136,6 @@
 			font-weight: 900;
 			content: "\f14a";
 		}
-	}
-	.pointer-hint {
-		flex: 0 100%;
-		padding: 0 1em 0.3em 0;
-		margin-left: 4ch;
-		font-size: 0.9em;
-		// background: var(--div-bg-color);
-		color: var(--hint-color);
 	}
 
 	.pointer-chooser {
@@ -249,12 +254,4 @@
 			font-size: .8em;
 		}
 	}
-}
-
-
-.dark-mode .pointer-designer {
-	--border-color: #aaa;
-	--div-bg-color: rgba(150,150,150, 0.05);
-	--highlight-color: #7bb4ff;
-	--hint-color: #797979;
 }

@@ -3,10 +3,26 @@
   --div-border-color: #6666;
   --div-bg-color: rgba(0, 0, 0, 0.05);
   --highlight-color: red;
-  --hint-color: #444;
+  --hint-color: #aaa;
 }
 .pointer-settings .window-content {
   padding: 0;
+}
+.pointer-settings span,
+.pointer-settings h2,
+.pointer-settings p,
+.pointer-settings a,
+.pointer-settings label {
+  mix-blend-mode: difference;
+  color: #DDD;
+}
+.pointer-settings .pointer-hint {
+  flex: 0 100%;
+  padding: 0 1em 0.3em 0;
+  margin-left: 4ch;
+  font-size: 0.9em;
+  color: var(--hint-color);
+  mix-blend-mode: difference;
 }
 .pointer-settings nav {
   background: var(--div-bg-color);
@@ -104,13 +120,6 @@
 .pointer-settings .chooser-checkbox input:checked + a:before {
   font-weight: 900;
   content: "\f14a";
-}
-.pointer-settings .pointer-hint {
-  flex: 0 100%;
-  padding: 0 1em 0.3em 0;
-  margin-left: 4ch;
-  font-size: 0.9em;
-  color: var(--hint-color);
 }
 .pointer-settings .pointer-chooser {
   display: flex;
@@ -213,10 +222,4 @@
   background: black;
   margin: 0 0 10px 0;
   font-size: 0.8em;
-}
-.dark-mode .pointer-designer {
-  --border-color: #aaa;
-  --div-bg-color: rgba(150, 150, 150, 0.05);
-  --highlight-color: #7bb4ff;
-  --hint-color: #797979;
 }

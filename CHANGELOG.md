@@ -1,3 +1,9 @@
+# v2.3.0
+
+- *FIX* Apply settings to all player buttons being shown to non GM users.
+- *FIX* Some issues when selecting the pointer/ping checkboxes.
+- Some styling changes for the settings menu to make it more flexible (i hope) regarding different themes. (At least wfrp is now compatible :rolling_eyes: )
+
 # v2.2.0
 
 - Added spanish localization, thanks to Github User @lozalojo!

@@ -11,21 +11,18 @@ export default function init() {
 }
 
 function setUpControls(settings) {
-	controls = {pointer: {}, ping: {}, force: {}};
+	controls = { pointer: {}, ping: {}, force: {} };
 
-	for (let objKey of ["ping", "pointer"]) {
+	for (let objKey of ['ping', 'pointer']) {
 		const keys = settings[objKey].key.split(' + ');
 		const metaKeys = keys.splice(0, keys.length - 1);
 		controls[objKey].meta = {};
-		for (const meta of ['Ctrl', 'Shift', 'Meta', 'Alt'])
-			controls[objKey].meta[meta.toLowerCase() + 'Key'] = metaKeys.includes(meta);
-	
+		for (const meta of ['Ctrl', 'Shift', 'Meta', 'Alt']) controls[objKey].meta[meta.toLowerCase() + 'Key'] = metaKeys.includes(meta);
+
 		if (keys[0]?.includes('Click')) {
 			controls[objKey].event = 'mouse';
-			if (keys[0].includes('Left'))
-				controls[objKey].button = 0;
-			else 
-				controls[objKey].button = 2;
+			if (keys[0].includes('Left')) controls[objKey].button = 0;
+			else controls[objKey].button = 2;
 		} else {
 			controls[objKey].event = 'key';
 			controls[objKey].key = keys[0];
@@ -33,26 +30,22 @@ function setUpControls(settings) {
 	}
 	controls.ping.pointerActive = settings.ping.pointerActive;
 
-	if (game.user.isGM) {		
+	if (game.user.isGM) {
 		const keys = settings.ping.force.split(' + ');
-		
+
 		const metaKeys = keys.splice(0, keys.length - 1);
 		controls.force.meta = {};
-		for (const meta of ['Ctrl', 'Shift', 'Meta', 'Alt'])
-			controls.force.meta[meta.toLowerCase() + 'Key'] = metaKeys.includes(meta);
+		for (const meta of ['Ctrl', 'Shift', 'Meta', 'Alt']) controls.force.meta[meta.toLowerCase() + 'Key'] = metaKeys.includes(meta);
 
 		if (keys[0]?.includes('Click')) {
 			controls.force.event = 'mouse';
-			if (keys[0].includes('Left'))
-				controls.force.button = 0;
-			else 
-				controls.force.button = 2;
+			if (keys[0].includes('Left')) controls.force.button = 0;
+			else controls.force.button = 2;
 		} else {
 			controls.force.event = 'key';
 			controls.force.key = keys[0];
 		}
 	}
-	
 }
 
 function removeListeners() {
@@ -78,7 +71,6 @@ function removeListeners() {
 			window.removeEventListener(`${controls.ping.event}down`, onForcePing);
 		}
 	}
-
 }
 
 function addListeners() {
@@ -111,18 +103,18 @@ function checkKey(ev, obj) {
 
 	const key = game.keyboard.getKey(ev);
 	if (key) {
-		if (key.toUpperCase() !== obj.key.toUpperCase())
-			return false;
-	} else { // else pointer event, which always has the correct key
-		
+		if (key?.toUpperCase() !== obj.key?.toUpperCase()) return false;
+	} else {
+		// else pointer event, which always has the correct key
+
 		if (ev.button !== obj.button) return false;
 	}
-	
 
 	for (let key of Object.keys(obj.meta)) {
 		if (obj.meta[key] !== ev[key]) return false;
 	}
-	ev.preventDefault(); ev.stopPropagation();
+	ev.preventDefault();
+	ev.stopPropagation();
 	return true;
 }
 
@@ -156,6 +148,5 @@ function onForcePing(ev) {
 	if (controls.ping.pointerActive && !controls.pointer.active) return;
 	if (!checkKey(ev, controls.force)) return;
 	// console.log('Pointer | on Force Ping ', ev);
-	canvas.controls.pointer.ping({force: true});
-
+	canvas.controls.pointer.ping({ force: true });
 }

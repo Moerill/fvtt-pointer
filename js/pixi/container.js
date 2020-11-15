@@ -1,4 +1,4 @@
-import { Pointer, Ping } from "./pointer.js";
+import { Pointer, Ping } from './pointer.js';
 import { TweenMax } from '../../../../scripts/greensock/esm/all.js';
 import { PointerSettingsMenu } from '../settings/settings.js';
 
@@ -8,7 +8,7 @@ export class PointerContainer extends PIXI.Container {
 		this.initUsers();
 
 		this._socket = 'module.pointer';
-		this._onMouseMove = ev => this._mouseMove(ev);
+		this._onMouseMove = (ev) => this._mouseMove(ev);
 	}
 
 	get deltaTime() {
@@ -18,38 +18,37 @@ export class PointerContainer extends PIXI.Container {
 	static init() {
 		// called inside the ready hook, so settings are registered.
 		// ready hook *always* is supposed to come after the canvasReady hook
-		if (canvas.scene)
-			canvas.controls.pointer = canvas.controls.addChild(new PointerContainer());
+		if (canvas.scene) canvas.controls.pointer = canvas.controls.addChild(new PointerContainer());
 
 		// window.addEventListener('mousemove', PointerContainer.trackMousePos);
 		game.socket.on('module.pointer', PointerContainer.socketHandler);
 		// but ready comes only during initialization
 		// so we need to take care of future scene changes (or other reasons for canvas rerenders)
 		Hooks.on('canvasReady', () => {
-			if (canvas.controls.pointer) canvas.controls.pointer.destroy({chidren: true});
+			if (canvas.controls.pointer) canvas.controls.pointer.destroy({ chidren: true });
 
-			canvas.controls.pointer = canvas.controls.addChild(new PointerContainer())
+			canvas.controls.pointer = canvas.controls.addChild(new PointerContainer());
 		});
 	}
 
 	async initUsers() {
-    this._users = {}
+		this._users = {};
 		for (let user of game.users) {
 			const data = this._getUserPointerData(user);
 			const pointer = this.addChild(new Pointer(data.pointer, user.id));
 			const ping = this.addChild(new Ping(data.ping, user.id));
 			ping.hide();
 			pointer.hide();
-			this._users[user.id] = {pointer, ping};
+			this._users[user.id] = { pointer, ping };
 		}
 	}
 
 	_getUserPointerData(user) {
 		const collection = game.settings.get('pointer', 'collection') || PointerSettingsMenu.defaultCollection;
 		const settings = mergeObject(PointerSettingsMenu.defaultSettings, user.getFlag('pointer', 'settings'));
-		const pointerData = collection.find(e => e.id === settings.pointer) || collection[0];
-		const pingData = collection.find(e => e.id === settings.ping) || collection[1] || collection[0];
-		return {pointer: pointerData, ping: pingData}
+		const pointerData = collection.find((e) => e.id === settings.pointer) || collection[0];
+		const pingData = collection.find((e) => e.id === settings.ping) || collection[1] || collection[0];
+		return { pointer: pointerData, ping: pingData };
 	}
 
 	update(user) {
@@ -67,34 +66,33 @@ export class PointerContainer extends PIXI.Container {
 
 	updateUserColor(user) {
 		const pointer = this._users[user.id].pointer;
-		pointer.update({tint: pointer.data.tint});
+		pointer.update({ tint: pointer.data.tint });
 		const ping = this._users[user.id].ping;
-		ping.update({tint: ping.data.tint});
+		ping.update({ tint: ping.data.tint });
 	}
 
 	getMouseWorldCoord() {
 		return canvas.app.renderer.plugins.interaction.mouse.getLocalPosition(canvas.stage);
 	}
 
-	ping({userId = game.user.id, position = this.getMouseWorldCoord(), force = false, scale = canvas.stage.scale.x}={}) {
+	ping({ userId = game.user.id, position = this.getMouseWorldCoord(), force = false, scale = canvas.stage.scale.x } = {}) {
 		const ping = this._users[userId].ping;
-		ping.update({position}); 
+		ping.update({ position });
 
 		if (force) {
-			canvas.animatePan({x: position.x, y: position.y, scale: scale});
+			canvas.animatePan({ x: position.x, y: position.y, scale: scale });
 		}
 
-
 		if (userId !== game.user.id) return;
-		
+
 		const data = {
 			senderId: userId,
 			position: position,
 			sceneId: canvas.scene._id,
-			type: "ping",
+			type: 'ping',
 			force: force,
-			scale: canvas.stage.scale.x
-		}
+			scale: canvas.stage.scale.x,
+		};
 		game.socket.emit(this._socket, data);
 	}
 
@@ -106,22 +104,21 @@ export class PointerContainer extends PIXI.Container {
 		if (data.stop) {
 			canvas.controls.pointer.hidePointer(data.senderId);
 			return;
-		}
-		else if (data.sceneId !== canvas.scene.id) return;
-		else if (data.type  === 'pointer')
-			canvas.controls.pointer.movePointer(data.senderId, data.position);
+		} else if (data.sceneId !== canvas.scene.id) return;
+		else if (data.type === 'pointer') canvas.controls.pointer.movePointer(data.senderId, data.position);
 		else if (data.type === 'ping')
-			canvas.controls.pointer.ping({userId: data.senderId, position: data.position, force: data.force, scale: data.scale})
+			canvas.controls.pointer.ping({ userId: data.senderId, position: data.position, force: data.force, scale: data.scale });
 	}
 
-	movePointer(userId, {x, y}) {
+	movePointer(userId, { x, y }) {
 		const pointer = this._users[userId].pointer;
-		if (pointer.renderable) { // only animate if already visible
-			TweenMax.to(pointer.position, this.deltaTime / 1000, {x, y});
+		if (pointer.renderable) {
+			// only animate if already visible
+			TweenMax.to(pointer.position, this.deltaTime / 1000, { x, y });
 		} else {
 			pointer.renderable = true;
-			this._users[userId].pointer.update({position: {x, y}});
-		}		
+			this._users[userId].pointer.update({ position: { x, y } });
+		}
 	}
 
 	hidePointer(userId) {
@@ -141,26 +138,27 @@ export class PointerContainer extends PIXI.Container {
 		this._users[game.user.id].pointer.renderable = false;
 		const data = {
 			senderId: game.user._id,
-			stop: true
-		}
+			stop: true,
+		};
 		game.socket.emit(this._socket, data);
 	}
 
 	_mouseMove(ev) {
-		const {x, y} = this.getMouseWorldCoord();
-		this._users[game.user.id].pointer.update({position: {x, y}});
+		const { x, y } = this.getMouseWorldCoord();
+		this._users[game.user.id].pointer.update({ position: { x, y } });
 
 		const dt = Date.now() - this.lastTime;
-		if (dt < this.deltaTime) // 30 times per second
+		if (dt < this.deltaTime)
+			// 30 times per second
 			return;
 
 		this.lastTime = Date.now();
 		let mdata = {
 			senderId: game.user._id,
-			position: {x,y},
+			position: { x, y },
 			sceneId: canvas.scene._id,
-			type: "pointer"
-		}
+			type: 'pointer',
+		};
 		game.socket.emit(this._socket, mdata);
 	}
 

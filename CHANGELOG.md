@@ -1,3 +1,9 @@
+# v2.3.1
+
+- *FIX* some small issue when checking keys
+- *FIX* changed the update Pointer update method to be async, as i initially intended it to be..
+- *FIX* now using ``Timeline.kill()`` instead of ``Timeline.clear()``, for proper timeline removal
+
 # v2.3.0
 
 - *FIX* Apply settings to all player buttons being shown to non GM users.

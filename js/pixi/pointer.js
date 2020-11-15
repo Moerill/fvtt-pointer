@@ -94,7 +94,7 @@ export class Pointer extends PIXI.Container {
 		this._drawing = false;
 	}
 
-	update(udata) {
+	async update(udata) {
 		this.data = mergeObject(this.data, duplicate(udata));
 		this.draw(expandObject(udata));
 
@@ -121,7 +121,7 @@ export class Pointer extends PIXI.Container {
 
 	destroy(...args) {
 		super.destroy(...args);
-		this.timeline.clear();
+		this.timeline?.kill();
 	}
 }
 

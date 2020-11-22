@@ -91,7 +91,7 @@ export class PointerContainer extends PIXI.Container {
 			sceneId: canvas.scene._id,
 			type: 'ping',
 			force: force,
-			scale: canvas.stage.scale.x,
+			scale: scale,
 		};
 		game.socket.emit(this._socket, data);
 	}

@@ -1,13 +1,17 @@
+# v2.3.2
+
+- _0.8.x FIX_ removed deprecated attribute usage.
+
 # v2.3.1
 
-- *FIX* some small issue when checking keys
-- *FIX* changed the update Pointer update method to be async, as i initially intended it to be..
-- *FIX* now using ``Timeline.kill()`` instead of ``Timeline.clear()``, for proper timeline removal
+- _FIX_ some small issue when checking keys
+- _FIX_ changed the update Pointer update method to be async, as i initially intended it to be..
+- _FIX_ now using `Timeline.kill()` instead of `Timeline.clear()`, for proper timeline removal
 
 # v2.3.0
 
-- *FIX* Apply settings to all player buttons being shown to non GM users.
-- *FIX* Some issues when selecting the pointer/ping checkboxes.
+- _FIX_ Apply settings to all player buttons being shown to non GM users.
+- _FIX_ Some issues when selecting the pointer/ping checkboxes.
 - Some styling changes for the settings menu to make it more flexible (i hope) regarding different themes. (At least wfrp is now compatible :rolling_eyes: )
 
 # v2.2.0
@@ -16,15 +20,15 @@
 
 # v2.1.2
 
-- *FIX* using the new gsap dist path again, now that it has returned.
+- _FIX_ using the new gsap dist path again, now that it has returned.
 
 # v2.1.1
 
-- *FIX* links in the settings menu
+- _FIX_ links in the settings menu
 
 # v2.1.0
 
-- grape juices isometric module compatibility! 
+- grape juices isometric module compatibility!
   - This also resulted in a bit smarter and cleaner way to get the cursor position, yay!
 
 # v2.0.1

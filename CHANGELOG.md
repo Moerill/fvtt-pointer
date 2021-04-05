@@ -1,4 +1,11 @@
+# v2.3.3
+
+- Now supports the [Bug Reporter module](https://www.foundryvtt-hub.com/package/bug-reporter/)!
+- Added cover and icon for Manifest+
+
 # v2.3.2
+
+**All updates starting now will only be available for FVTT versions >0.8.1**
 
 - _0.8.x FIX_ removed deprecated attribute usage.
 

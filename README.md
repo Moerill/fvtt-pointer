@@ -1,4 +1,4 @@
-# PnP - Pings and Pointer
+# PnP - Pointer and Pings!
 <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/moerill/fvtt-pointer?style=flat-square"> <img alt="GitHub" src="https://img.shields.io/github/license/moerill/fvtt-pointer?style=flat-square"> <img alt="GitHub Releases" src="https://img.shields.io/github/downloads/moerill/fvtt-pointer/latest/total?style=flat-square">  
 
 Gives all players the option to show a customizable cursor on demand, as well as ping any location with a custom ping!  
@@ -7,7 +7,7 @@ As GM you can also move your players view to your pin on demand.
 
 ![](doc/pnp.gif)
 
-- [PnP - Pings and Pointer](#pnp---pings-and-pointer)
+- [PnP - Pointer and Pings!](#pnp---pointer-and-pings!)
 - [Important Information!](#important-information)
 	- [FVTT Version compatibility](#fvtt-version-compatibility)
 	- [Bug Reporting and Feature Suggestions](#bug-reporting-and-feature-suggestions)
@@ -16,7 +16,7 @@ As GM you can also move your players view to your pin on demand.
 	- [Support the development](#support-the-development)
 - [Feature Overview](#feature-overview)
 	- [Settings Menu](#settings-menu)
-		- [Creating Pings and Pointers](#creating-pings-and-pointers)
+		- [Creating Pointers and Pings](#creating-pointers-and-pings)
 
 # Important Information!
 
@@ -69,7 +69,7 @@ Press a button and a pointer will follow your mouse, while the button is pressed
 The pointer, pings and buttons are customizable using the settings menu. Here you can choose different images, or videos and apply some basic transformations as well as animations to them.  
 To make setup easier for players the GM can decide to force his settings onto all players! (This will not stop them from changing those afterwards.)  
 
-### Creating Pings and Pointers
+### Creating Pointers and Pings
 ![](doc/design_studio.webp)  
 GM View of the design studio (1).  
 2. Here you can which custom pointer you want to use as pointer or as ping. Just click on one of the checkboxes. The GM can also create new custom pointer or delete any existing.

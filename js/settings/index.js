@@ -35,7 +35,7 @@ export function initSettingsMenu() {
 
 	loadTemplates([
 		'modules/pointer/templates/designer.html',
-	]);	
+	]);
 
 	Hooks.on('updateUser', (entity, udata) => {
 		if (udata.color) {
@@ -43,10 +43,6 @@ export function initSettingsMenu() {
 		}
 		if (udata.flags?.pointer?.settings)
 			canvas.controls.pointer.update(entity);
-
-		
-		if (udata.flags?.pointer?.settings?.controls && entity.id === game.user.id)
-			initControls();
 	});
 
 	game.settings.register('pointer', 'version', {
@@ -56,15 +52,4 @@ export function initSettingsMenu() {
 		default: "0",
 		type: String
 	});
-	if (game.user.isGM) {
-		const version = game.settings.get('pointer', 'version');
-		// only do this once after upgrading to 2.0.0
-		if (isNewerVersion("2.0.0", version)) {
-			new (PointerSettingsMenu)().render(true);
-		}
-		// Update version to newest mod version - every time
-		if (isNewerVersion(game.modules.get('pointer').data.version, version)) {
-			game.settings.set('pointer', 'version', game.modules.get('pointer').data.version);
-		}
-	}
 }

@@ -3,7 +3,7 @@
 		<a class='item' data-tab='Info'>Info</a>
 		<a class='item' data-tab='General'>General</a>
 		<a class='item' data-tab='chooser'>Choose your Pointer!</a>
-	</nav>	
+	</nav>
 
 	<section class='tab' data-tab='Info'>
 		<h2>Pointer v2 - Important!</h2>
@@ -19,22 +19,8 @@
 	</section>
 	<section class='tab' data-tab='General'>
 		<h2>{{localize "POINTER.Settings.Controls.header"}}</h2>
-		<div class='form-group'>
-			<label for='pointer-pointer-button'>{{localize "POINTER.Settings.Controls.pointer.label"}}</label><input type='text' id='pointer-pointer-button' name='user.controls.pointer.key' class='pointer-control-chooser' value='{{controls.pointer.key}}' readonly/>
-			<span class='pointer-hint'>{{localize "POINTER.Settings.Controls.inputhint"}}<br>{{localize "POINTER.Settings.Controls.pointer.hint"}}</span>
-		</div>
-		<div class='form-group'>
-			<label for='pointer-ping-button'>{{localize "POINTER.Settings.Controls.ping.label"}}</label><input type='text' id='pointer-ping-button' name='user.controls.ping.key' class='pointer-control-chooser' value='{{controls.ping.key}}' readonly/>
-			<span class='pointer-hint'>{{localize "POINTER.Settings.Controls.inputhint"}}<br>{{localize "POINTER.Settings.Controls.ping.hint"}}</span>
-		</div>
-		{{#if isGM}}
-		<div class='form-group'>
-			<label>{{localize "POINTER.Settings.Controls.ping.force"}}</label><input type='text' id='pointer-ping-force-button' name='user.controls.ping.force' class='pointer-control-chooser' value='{{controls.ping.force}}' readonly/>
-			<span class='pointer-hint'>{{localize "POINTER.Settings.Controls.ping.forceHint"}}</span>
-		</div>
-		{{/if}}
 		<div class='form-checkbox-group'>
-			<input type='checkbox' data-dtype='boolean' name='user.controls.ping.pointerActive' id='pointer-pointer-active' {{checked controls.ping.pointerActive}}/><label for='pointer-pointer-active'>{{localize 'POINTER.Settings.Controls.ping.pointerActive'}}</label> 
+			<input type='checkbox' data-dtype='boolean' name='user.controls.ping.pointerActive' id='pointer-pointer-active' {{checked controls.ping.pointerActive}}/><label for='pointer-pointer-active'>{{localize 'POINTER.Settings.Controls.ping.pointerActive'}}</label>
 			<span class='pointer-hint'>{{localize "POINTER.Settings.Controls.ping.pointerActiveHint"}}</span>
 		</div>
 

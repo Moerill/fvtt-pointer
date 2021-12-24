@@ -1,6 +1,7 @@
 # v2.3.4
 
 - Now working with FVTT v9. Huge thanks to GitHub User @spaceotter for providing this fix!
+- German Translation thanks to GitHub User @BlueSkyBlackBird!
 
 # v2.3.3
 

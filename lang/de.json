@@ -1,0 +1,75 @@
+{
+	"POINTER": {
+		"Settings": {
+			"Name": "Wähle deine Tastenkombination, ping and pointer!",
+			"Button": "Einstellungen und Ansichten Studio",
+			"Controls": {
+				"header": "Steuerung",
+				"inputhint": "Klicke auf die Eingabe und wählen die gewünschte Taste.",
+				"pointer": {
+					"label": "Zeiger",
+					"hint": "Während du diese Taste gedrückt hälst wird der Zeiger deiner Maus folgen (nur über Arbeitsfläche)."
+				},
+				"ping": {
+					"label": "Zeiger",
+					"pointerActive": "Ping ist nur möglich, wenn der Zeiger aktiv ist",
+					"pointerActiveHint": "Wenn diese Option aktiv ist erscheint der Ping nur, wenn der Zeiger bereits akitiv ist.",
+					"hint": "Wenn du diese Taste drückst wird ein Ping an der Stelle deines Mauszaugers auftauchen (nur auf der Arbeitsfläche). Du kannst nur Pings auslösen, wenn der Zeiger aktiv ist.",
+					"force": "Ziehe Spieler-Sichtfeld auf die Stelle des Pings",
+					"forceHint": "Wenn du diesen Knopf drückst erzeugst du einen Ping und ziehst das Sichtfeld aller Spieler auf diesen Punkt."
+				}
+			},
+			"GM": {
+				"applyToAll": {
+					"label": "Einstellungen auf alle Benutzer anwenden?",
+					"button": "Ja!",
+					"hint": "Alle Benutzer verwenden auch diese Tastenkombinationen, Ping -und Zeigereinstellungen. Spieler dürfen anschließend diese Einstellungen nicht selbst ändern!"
+				}
+			},
+			"Designer": {
+				"Graphic": "Grafik",
+				"Scale": {
+					"label": "Skalierung"
+				},
+				"Angle": {
+					"label": "Winkel"
+				},
+				"Offset": {
+					"label": "Versatz"
+				},
+				"Tint": {
+					"label": "Tönungsfarbe",
+					"userColor": "Verwende die Benutzerfarbe zur Tönung."
+				},
+				"Animations": {
+					"header": "Animation",
+					"rotate": {
+						"label": "Drehung"
+					},
+					"scale": {
+						"label": "Skalierung"
+					},
+					"duration": "Dauer",
+					"easing": "Abschwächung"
+				},
+				"pingDuration": "Dauer des Pings"
+			},
+			"Chooser": {
+				"addPointer": "Neuer Zeiger"
+			}
+		},
+		"General": {
+			"min": "Min",
+			"max": "Max",
+			"name": "Name",
+			"ping": "Ping",
+			"pointer": "Zeiger",
+			"delete": "Löschen?",
+			"units": {
+				"grid": "Gittereinheiten",
+				"degree": "Grad",
+				"seconds": "s"
+			}
+		}
+	}
+}

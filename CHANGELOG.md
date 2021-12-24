@@ -1,3 +1,7 @@
+# v2.3.4
+
+- Now working with FVTT v9. Huge thanks to GitHub User @spaceotter for providing this fix!
+
 # v2.3.3
 
 - Now supports the [Bug Reporter module](https://www.foundryvtt-hub.com/package/bug-reporter/)!

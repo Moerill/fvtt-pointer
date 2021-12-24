@@ -1,4 +1,5 @@
 import { Pointer } from '../pixi/pointer.js';
+import { getKey } from '../keybindings.js';
 
 export class PointerSettingsMenu extends FormApplication {
 	static get defaultOptions() {
@@ -432,12 +433,12 @@ export class PointerSettingsMenu extends FormApplication {
 				this._focusedControl = ev.currentTarget;
 				return;
 			}
-			let key = game.keyboard.getKey(ev);
+			let key = getKey(ev);
 			if (['Control', 'Shift', 'Alt', 'Meta'].includes(key)) {
 				ev.currentTarget.value = key;
 				return;
 			}
-			ev.currentTarget.value = this._getMetaKeys(ev) + game.keyboard.getKey(ev).toUpperCase();
+			ev.currentTarget.value = this._getMetaKeys(ev) + getKey(ev).toUpperCase();
 		});
 	}
 

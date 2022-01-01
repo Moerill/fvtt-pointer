@@ -1,4 +1,76 @@
 {
-    "localization-location":"You can find the japanese localization at the centralized localization module. It can be found here https://github.com/BrotherSharper/foundryVTTja",
-    "localization-location-ja":"この翻訳ファイルは本体日本語化Modに存在します。こちらから入手してください https://github.com/BrotherSharper/foundryVTTja"
-  }
+  "Localization Provided By": "Brother Sharp",
+	"POINTER": {
+		"Settings": {
+			"Name": "注目マーカー、ポインター、ショートカットキーを選んでね！",
+			"Button": "設定変更スタジオ",
+			"Controls": {
+				"header": "ショートカット",
+				"inputhint": "入力ボックスに任意のキーを入力してください：",
+				"pointer": {
+					"label": "ポインター",
+					"hint": "このボタンを押している間はポインターがマウスを追尾します。キャンバス上にいるときだけ有効です。"
+				},
+				"ping": {
+					"label": "注目マーカー",
+					"pointerActive": "ポインター出現時のみ表示",
+					"pointerActiveHint": "この設定が有効化されている時、ポインターが出現しているときにのみマウスを長めに押下すると注目マーカーが発動します。",
+					"hint": "このボタンを押すと画面上のマウスのいる位置に注目マーカーが出現します。キャンバス上にいるときだけ有効です。",
+					"force": "PLの視点を注目マーカーに集める",
+					"forceHint": "このボタンを押すと注目マーカーをマウスのあるところに出現させ、PLのカメラをGMと同じズーム、同じ位置に移動させます。"
+				}
+			},
+			"GM": {
+				"applyToAll": {
+					"label": "すべてのユーザに適用？",
+					"button": "はい！",
+					"hint": "すべてのユーザがここで設定されたショートカットキーを自動的に適用されます。PLはその後独自にショートカットを変えることもできます。"
+				}
+			},
+			"Designer": {
+				"Graphic": "見た目",
+				"Scale": {
+					"label": "大きさ"
+				},
+				"Angle": {
+					"label": "角度"
+				},
+				"Offset": {
+					"label": "オフセット"
+				},
+				"Tint": {
+					"label": "色合い",
+					"userColor": "ユーザ色がデフォルトです。"
+				},
+				"Animations": {
+					"header": "アニメーション",
+					"rotate": {
+						"label": "回転"
+					},
+					"scale": {
+						"label": "サイズ"
+					},
+					"duration": "持続時間",
+					"easing": "アニメーション方法"
+				},
+				"pingDuration": "マーカの持続時間"
+			},
+			"Chooser": {
+				"addPointer": "新規作成"
+			}
+		},
+		"General": {
+			"min": "最低",
+			"max": "最大",
+			"name": "名前",
+			"ping": "注目マーカー",
+			"pointer": "ポインター",
+			"delete": "削除しますか？",
+			"units": {
+				"grid": "マス目単位",
+				"degree": "°",
+				"seconds": "秒"
+			}
+		}
+	}
+}

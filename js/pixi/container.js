@@ -81,9 +81,9 @@ export class PointerContainer extends PIXI.Container {
 
   updateUserColor(user) {
     const pointer = this._users[user.id].pointer;
-    pointer.update({ tint: pointer.data.tint });
+    pointer.update({ tint: pointer.tint });
     const ping = this._users[user.id].ping;
-    ping.update({ tint: ping.data.tint });
+    ping.update({ tint: ping.tint });
   }
 
   getMouseWorldCoord() {

@@ -55,7 +55,7 @@ export class Pointer extends PIXI.Container {
 		}
 
 		if (newData.tint) {
-			if (this.data.tint.useUser) this.sprite.tint = Number('0x' + game.users.get(this.userId).data.color.slice(1));
+			if (this.data.tint.useUser) this.sprite.tint = Number('0x' + game.users.get(this.userId).color.slice(1));
 			else this.sprite.tint = Number('0x' + data.tint.color.slice(1));
 		}
 
@@ -63,8 +63,8 @@ export class Pointer extends PIXI.Container {
 			if (this.timeline) this.timeline.clear();
 			else this.timeline = new TimelineMax();
 
-			if (this.data?.animations?.rotation?.use) {
-				const rotData = this.data.animations.rotation;
+			if (this.animations?.rotation?.use) {
+				const rotData = this.animations.rotation;
 				const min = rotData.min,
 					max = rotData.max,
 					dur = rotData.dur,
@@ -75,8 +75,8 @@ export class Pointer extends PIXI.Container {
 			} else {
 				this.rotation = 0;
 			}
-			if (this.data?.animations?.scale?.use) {
-				const scaleData = this.data.animations.scale;
+			if (this.animations?.scale?.use) {
+				const scaleData = this.animations.scale;
 				const min = scaleData.min,
 					max = scaleData.max,
 					dur = scaleData.dur,
@@ -104,7 +104,7 @@ export class Pointer extends PIXI.Container {
 	async save() {
 		// do update stuff here
 		const collection = duplicate(game.settings.get('pointer', 'collection'));
-		let idx = collection.findIndex((e) => e.id === this.data.id);
+		let idx = collection.findIndex((e) => e.id === this.id);
 		const data = duplicate(this.data);
 		delete data.position;
 		collection[idx] = data;
@@ -145,7 +145,7 @@ export class Ping extends Pointer {
 						this.timeline.pause();
 					},
 				},
-				this.data.pingDuration || 3
+				this.pingDuration || 3
 			);
 
 			this.timeline.restart();

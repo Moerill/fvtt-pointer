@@ -63,8 +63,8 @@ export function initSettingsMenu() {
 			new (PointerSettingsMenu)().render(true);
 		}
 		// Update version to newest mod version - every time
-		if (isNewerVersion(game.modules.get('pointer').data.version, version)) {
-			game.settings.set('pointer', 'version', game.modules.get('pointer').data.version);
+		if (isNewerVersion(game.modules.get('pointer').version, version)) {
+			game.settings.set('pointer', 'version', game.modules.get('pointer').version);
 		}
 	}
 }

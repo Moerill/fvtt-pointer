@@ -311,7 +311,7 @@ export class PointerSettingsMenu extends FormApplication {
 			if (target) {
 				const li = target.closest('li');
 				let collection = duplicate(game.settings.get('pointer', 'collection'));
-				const pointerData = li.dataset.pointerId === this.pointer.data.id ? {} : duplicate(this.pointer.data);
+				const pointerData = li.dataset.pointerId === this.pointer.id ? {} : duplicate(this.pointer.data);
 				collection = collection.filter((e) => e.id !== li.dataset.pointerId);
 				if (collection.length === 0) collection = duplicate(this.constructor.defaultCollection);
 				game.settings.set('pointer', 'collection', collection).then(async (e) => {
@@ -510,7 +510,7 @@ export class PointerSettingsMenu extends FormApplication {
 		const data = expandObject(formData);
 		if (this.canConfigure) {
 			// this.pointer.save();
-			data.pointer.img = this.pointer.data.img;
+			data.pointer.img = this.pointer.img;
 			const pointer = new Pointer(data.pointer);
 			pointer.save();
 		}
@@ -547,13 +547,13 @@ export class PointerSettingsMenu extends FormApplication {
 		this._pixiApp.view.addEventListener('click', (ev) => {
 			new FilePicker({
 				type: 'imagevideo',
-				current: this.pointer.data.img || '',
+				current: this.pointer.img || '',
 				callback: (path) => {
 					this.pointer.update({ img: path });
 				},
 				top: this.position.top + 40,
 				left: this.position.left + 10,
-			}).browse(this.pointer.data.img);
+			}).browse(this.pointer.img);
 		});
 		const pointerId = this.userData.pointer;
 		const collection = game.settings.get('pointer', 'collection');

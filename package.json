@@ -1,6 +1,6 @@
 {
 	"name": "module-template",
-	"version": "2.3.4",
+	"version": "2.4.0",
 	"description": "",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
@@ -11,8 +11,8 @@
 		"foundry-pc-types": "gitlab:foundry-projects/foundry-pc/foundry-pc-types"
 	},
 	"dependencies": {
-		"browser-sync": "^2.26.13",
-		"chalk": "^4.1.0",
+		"browser-sync": "^2.27.10",
+		"chalk": "^4.1.2",
 		"gulp": "^4.0.2",
 		"gulp-concat": "^2.6.1",
 		"gulp-git": "^2.10.1",

@@ -60,6 +60,7 @@ export class Pointer extends PIXI.Container {
 		}
 
 		if (newData.animations) {
+			this.animations = newData.animations;
 			if (this.timeline) this.timeline.clear();
 			else this.timeline = new TimelineMax();
 

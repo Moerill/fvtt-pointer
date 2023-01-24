@@ -1,3 +1,11 @@
+# v2.4.1
+
+- Animations fixed thanks to github user @DavidAremaCarretero !
+
+# v2.4
+
+- Added FVTT v10 compatibility thanks to github user @xdy!
+
 # v2.3.4
 
 - Now working with FVTT v9. Huge thanks to GitHub User @spaceotter for providing this fix!

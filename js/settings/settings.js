@@ -510,7 +510,7 @@ export class PointerSettingsMenu extends FormApplication {
 		const data = expandObject(formData);
 		if (this.canConfigure) {
 			// this.pointer.save();
-			data.pointer.img = this.pointer.img;
+			data.pointer.img = this.pointer.data.img;
 			const pointer = new Pointer(data.pointer);
 			pointer.save();
 		}

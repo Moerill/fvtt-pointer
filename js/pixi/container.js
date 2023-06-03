@@ -87,9 +87,12 @@ export class PointerContainer extends PIXI.Container {
   }
 
   getMouseWorldCoord() {
-    return canvas.app.renderer.plugins.interaction.mouse.getLocalPosition(
-      canvas.stage
-    );
+    if (canvas.app.renderer.events) {
+      // PixiJS 7 (Foundry VTT 11)
+      return canvas.app.renderer.events.pointer.getLocalPosition(canvas.stage);
+    }
+
+    return canvas.app.renderer.plugins.interaction.mouse.getLocalPosition(canvas.stage);
   }
 
   ping({
